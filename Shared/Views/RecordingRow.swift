@@ -39,6 +39,8 @@ confirmationDialogIsShown = true
 							presenting: recording) { _ in
 			Button(role: .destructive) {
 				audioRecorder.delete(recording)
+				// stop playback if the deleted file is currently playing
+				if audioPlayer.isPlaying && audioPlayer.audioPlayer.url == recording.fileURL { audioPlayer.stopPlaying() }
 		} label: {
 			Text("Delete")
 			} // button
