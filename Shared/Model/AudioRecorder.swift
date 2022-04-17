@@ -86,6 +86,33 @@ audioRecorder = try AVAudioRecorder(url: filePath, settings: recordingSettings)
 		} // end do try catch
 	} // func
 
+	func delete(_ recording: Recording) {
+		let url = recording.fileURL
+		print("Deleting \(url).")
+		do {
+			try FileManager.default.removeItem(at: url)
+			print("File deleted.")
+		} catch {
+			print("Could not delete \(url). The error was: \(error.localizedDescription)")
+		} // do try catch
+
+fetchRecordings()
+	}
+
+	func delete(_ urlsToDelete: [URL]) {
+			for url in urlsToDelete {
+				print("Deleting \(url).")
+				do {
+				   try FileManager.default.removeItem(at: url)
+					print("File deleted.")
+				} catch {
+					print("Could not delete \(url). The error was: \(error.localizedDescription)")
+				} // do try catch
+			} // loop
+
+		fetchRecordings()
+	} // func
+
 	override init() {
 		super.init()
 		fetchRecordings()

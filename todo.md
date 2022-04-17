@@ -2,13 +2,13 @@
 
 ##  Bugs
 
+* unable to select recordings in List view on macOS
 * fix audio quality issue
 * date stamp in file names should not include timezone info or + sign
-* why are deleted files still showing up in recordings list?
 
 ##. Features
 
-* deleting recordings
+* add confirmation dialog when deleting recordings
 * VoiceOver quick actions
 * function to filter recordings by day so as to only show recordings relevant to the specified day
 * syncing data with CoreData and CloudKit

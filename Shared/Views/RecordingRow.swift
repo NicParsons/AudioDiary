@@ -2,6 +2,7 @@ import SwiftUI
 
 struct RecordingRow: View {
 	let recording: Recording
+	@EnvironmentObject var audioRecorder: AudioRecorder
 	@ObservedObject var audioPlayer = AudioPlayer()
 
     var body: some View {
@@ -23,7 +24,14 @@ struct RecordingRow: View {
 				} // button
 				.foregroundColor(.red)
 			} // end if isPlaying
+
+			Button(action: {
+				audioRecorder.delete(recording)
+			}) {
+				Label("Delete", systemImage: "trash.circle")
+			}
 		} // HStack
+		.padding()
     } // body
 } // View
 

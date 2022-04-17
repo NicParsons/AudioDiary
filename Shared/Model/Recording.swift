@@ -1,6 +1,6 @@
 import Foundation
 
-struct Recording: Codable, Identifiable {
+struct Recording: Codable, Identifiable, Hashable {
 	var id = UUID()
 	var fileURL: URL
 

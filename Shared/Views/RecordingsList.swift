@@ -3,14 +3,30 @@ import SwiftUI
 struct RecordingsList: View {
 	@EnvironmentObject var audioRecorder: AudioRecorder
 	var recordings: [Recording]
+	@State private var selected: Recording?
 
     var body: some View {
-		List {
-			ForEach(recordings) { recording in
+		List(recordings, selection: $selected) { recording in
 RecordingRow(recording: recording)
-			}
-		} // list
+			} // List
+		.onDeleteCommand(perform: { delete(selected) })
     } // body
+
+	func delete(_ selected: Recording?) {
+		var files = [URL]()
+					if let selected = selected {
+						files.append(selected.fileURL)
+					audioRecorder.delete(files)
+					} // end if let
+	} // func
+
+	func delete(at offsets: IndexSet) {
+			var files = [URL]()
+			for index in offsets {
+				files.append(recordings[index].fileURL)
+			}
+			audioRecorder.delete(files)
+		}
 } // view
 
 struct RecordingsList_Previews: PreviewProvider {
