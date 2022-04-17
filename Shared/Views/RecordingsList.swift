@@ -8,6 +8,7 @@ struct RecordingsList: View {
     var body: some View {
 		List(recordings, selection: $selected) { recording in
 RecordingRow(recording: recording)
+			// tried putting the accessibilityAction here but it didn't have the desired effect
 			} // List
 		.onDeleteCommand(perform: { delete(selected) })
     } // body

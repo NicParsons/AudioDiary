@@ -48,6 +48,9 @@ confirmationDialogIsShown = true
 		} message: { _ in
 			Text("This action cannot be undone.")
 		} // confirmation dialog
+		.accessibilityAction(named: Text("Delete")) {
+			confirmationDialogIsShown = true
+		}
     } // body
 } // View
 
