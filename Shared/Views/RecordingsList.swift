@@ -6,7 +6,7 @@ struct RecordingsList: View {
 	@State private var selected: Recording?
 
     var body: some View {
-		List(recordings, selection: $selected) { recording in
+		List(recordings, id: \.self, selection: $selected) { recording in
 RecordingRow(recording: recording)
 			// tried putting the accessibilityAction here but it didn't have the desired effect
 			} // List
@@ -14,10 +14,8 @@ RecordingRow(recording: recording)
     } // body
 
 	func delete(_ selected: Recording?) {
-		var files = [URL]()
 					if let selected = selected {
-						files.append(selected.fileURL)
-					audioRecorder.delete(files)
+						audioRecorder.delete(selected.fileURL)
 					} // end if let
 	} // func
 

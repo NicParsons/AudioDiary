@@ -2,7 +2,7 @@
 
 ##  Bugs
 
-* unable to select recordings in List view on macOS
+
 
 ##. Features
 
@@ -13,3 +13,4 @@
 * maybe recording detail view
 * Calendar view to see all days for which there are recordings
 * Today view
+* understand the weird messages being written to the console
