@@ -49,7 +49,6 @@ Label("Record", systemImage: "record.circle")
 				.foregroundColor(.red)
 			} // end if
 		} // v stack
-		.navigationTitle(Text(date.formatted(date: .long, time: .omitted)))
 		.alert("Please grant the app access to your microphone",
 			   isPresented: $alertIsPresent) {
 			Button("OK", action: { print("The user dismissed the custom alert asking them to grant access to the microphone.") })
@@ -58,6 +57,7 @@ Label("Record", systemImage: "record.circle")
 			// conditionally show instructions depending on what platform/os
 		} // alert
 		} // Navigation View
+		.navigationTitle(Text(date.formatted(date: .long, time: .omitted)))
     } // body
 } // view
 
