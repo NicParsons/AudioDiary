@@ -56,11 +56,14 @@ audioRecorder = try AVAudioRecorder(url: filePath, settings: recordingSettings)
 	} // func
 
 	func newFileURL() -> URL {
-		let fileName = "diary entry.m4a"
+		let fileName = "diary entry"
+		let fileExtension = ".m4a"
 		let documentPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-		let dateStamp = Date().ISO8601Format(.init(dateSeparator: .dash, dateTimeSeparator: .space, timeSeparator: .omitted, timeZoneSeparator: .omitted, includingFractionalSeconds: false, timeZone: .autoupdatingCurrent))
-		print("The date is: \(dateStamp).")
-		let filePath = documentPath.appendingPathComponent("\(dateStamp) \(fileName)")
+		let iso8601Date = Date().ISO8601Format(.init(dateSeparator: .dash, dateTimeSeparator: .space, timeSeparator: .omitted, timeZoneSeparator: .omitted, includingFractionalSeconds: false, timeZone: .autoupdatingCurrent))
+		let dateTimeStamp = iso8601Date.substring(to: iso8601Date.firstIndex(of: "+") ?? iso8601Date.endIndex)
+		let dateStamp = dateTimeStamp.components(separatedBy: .whitespaces)[0]
+		let timeStamp = dateTimeStamp.components(separatedBy: .whitespaces)[1]
+		let filePath = documentPath.appendingPathComponent("\(dateStamp) \(fileName) at \(timeStamp)\(fileExtension)")
 		print("The file URL is \(filePath).")
 		return filePath
 	}
