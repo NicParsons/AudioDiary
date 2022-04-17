@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  Shared
-//
-//  Created by Nicholas Parsons on 16/4/2022.
-//
-
 import SwiftUI
 import CoreData
 
@@ -88,3 +81,11 @@ struct ContentView_Previews: PreviewProvider {
         ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
+
+//
+//  ContentView.swift
+//  Shared
+//
+//  Created by Nicholas Parsons on 16/4/2022.
+//
+
