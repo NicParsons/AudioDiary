@@ -48,6 +48,15 @@ confirmationDialogIsShown = true
 		} message: { _ in
 			Text("This action cannot be undone.")
 		} // confirmation dialog
+
+		// accessibility actions
+		.accessibilityAction(named: Text(audioPlayer.isPlaying ? "Stop" : "Play")) {
+			if audioPlayer.isPlaying {
+				audioPlayer.stopPlaying()
+			} else {
+				audioPlayer.startPlaying(recording.fileURL)
+			} // end if
+		} // end action
 		.accessibilityAction(named: Text("Delete")) {
 			confirmationDialogIsShown = true
 		}
