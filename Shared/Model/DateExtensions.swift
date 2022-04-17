@@ -2,12 +2,9 @@ import Foundation
 
 extension Date {
 	func isOnTheSameDay(as comparisonDate: Date) -> Bool {
-		let diff = Calendar.current.dateComponents([.day], from: self, to: comparisonDate)
-		if diff.day == 0 {
-			return true
-		} else {
-			return false
-		} // end if
+		let beginningOfDay = Calendar.current.startOfDay(for: comparisonDate)
+		let endOfDay = beginningOfDay.addingTimeInterval(60 * 60 * 24)
+		return self >= beginningOfDay && self < endOfDay
 	} // func
 
 	func stringWithRelativeFormatting() -> String {
