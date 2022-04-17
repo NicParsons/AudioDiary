@@ -8,7 +8,6 @@
 
 ##. Features
 
-* add confirmation dialog when deleting recordings
 * VoiceOver quick actions
 * function to filter recordings by day so as to only show recordings relevant to the specified day
 * syncing data with CoreData and CloudKit

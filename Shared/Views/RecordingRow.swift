@@ -4,6 +4,7 @@ struct RecordingRow: View {
 	let recording: Recording
 	@EnvironmentObject var audioRecorder: AudioRecorder
 	@ObservedObject var audioPlayer = AudioPlayer()
+	@State private var confirmationDialogIsShown = false
 
     var body: some View {
 		HStack {
@@ -26,12 +27,27 @@ struct RecordingRow: View {
 			} // end if isPlaying
 
 			Button(action: {
-				audioRecorder.delete(recording)
+confirmationDialogIsShown = true
 			}) {
 				Label("Delete", systemImage: "trash.circle")
 			}
 		} // HStack
 		.padding()
+		.confirmationDialog("Delete \(recording.description)?",
+							isPresented: $confirmationDialogIsShown,
+							titleVisibility: .visible,
+							presenting: recording) { _ in
+			Button(role: .destructive) {
+				audioRecorder.delete(recording)
+		} label: {
+			Text("Delete")
+			} // button
+			Button("Cancel", role: .cancel) {
+// do nothing
+			}
+		} message: { _ in
+			Text("This action cannot be undone.")
+		} // confirmation dialog
     } // body
 } // View
 

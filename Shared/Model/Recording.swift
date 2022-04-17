@@ -25,6 +25,10 @@ return creationDate
 	var fileName: String {
 		fileURL.lastPathComponent
 	}
+
+	var description: String {
+		return "diary entry for \(calendarDate.formatted(date: .abbreviated, time: .omitted)) at \(calendarDate.formatted(date: .omitted, time: .shortened))"
+	}
 }
 
 //
