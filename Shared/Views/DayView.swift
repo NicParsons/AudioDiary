@@ -13,7 +13,7 @@ struct DayView: View {
 
 			Spacer()
 
-			if audioRecorder.recording == false {
+			if !audioRecorder.isRecording {
 				// display the record button
 				Button(
 					action: {

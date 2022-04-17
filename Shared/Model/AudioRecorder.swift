@@ -4,7 +4,7 @@ import AVFoundation
 
 class AudioRecorder: NSObject, ObservableObject {
 	var audioRecorder: AVAudioRecorder!
-	@Published var recording = false
+	@Published var isRecording = false
 	@Published var recordings: [Recording] = []
 
 	var recordingSettings = [
@@ -15,7 +15,7 @@ class AudioRecorder: NSObject, ObservableObject {
 	   ]
 
 	func startRecording() {
-		if recording == true {
+		if isRecording {
 print("A recording is already in progress.")
 return
 		}
@@ -39,7 +39,7 @@ print(error)
 audioRecorder = try AVAudioRecorder(url: filePath, settings: recordingSettings)
 			audioRecorder.record()
 			DispatchQueue.main.async {
-				self.recording = true
+				self.isRecording = true
 			}
 			print("Recording started.")
 		} catch {
@@ -50,7 +50,7 @@ audioRecorder = try AVAudioRecorder(url: filePath, settings: recordingSettings)
 
 	func stopRecording() {
 		audioRecorder!.stop()
-		recording = false
+		isRecording = false
 		print("Recording stopped.")
 		fetchRecordings()
 	} // func

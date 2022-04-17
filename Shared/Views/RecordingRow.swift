@@ -10,7 +10,7 @@ struct RecordingRow: View {
 		HStack {
 			Text(recording.timeStamp)
 			Spacer()
-			if audioPlayer.isPlaying == false {
+			if !audioPlayer.isPlaying {
 				Button(action: {
 					audioPlayer.startPlaying(recording.fileURL)
 				}) {
