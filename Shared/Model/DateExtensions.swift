@@ -9,6 +9,14 @@ extension Date {
 			return false
 		} // end if
 	} // func
+
+	func stringWithRelativeFormatting() -> String {
+		let formatter = DateFormatter()
+		formatter.dateStyle = .long
+		formatter.timeStyle = .none
+		formatter.doesRelativeDateFormatting = true
+		return formatter.string(from: self)
+	}
 } // extension
 
 //  DateExtensions.swift

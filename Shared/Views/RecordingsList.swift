@@ -11,7 +11,14 @@ struct RecordingsList: View {
 RecordingRow(recording: recording)
 			// tried putting the accessibilityAction here but it didn't have the desired effect
 			} // List
+		.frame(minWidth: 200, maxWidth: 400)
 		.onDeleteCommand(perform: { delete(selected) })
+		.overlay(Group {
+			if recordings.isEmpty {
+				Text("You haven't recorded a diary entry for this day yet. Hit the “Record” button to get started.")
+					.font(.largeTitle)
+			}
+		})
     } // body
 
 	func delete(_ selected: Recording?) {

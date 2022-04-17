@@ -57,7 +57,7 @@ Label("Record", systemImage: "record.circle")
 			// conditionally show instructions depending on what platform/os
 		} // alert
 		} // Navigation View
-		.navigationTitle(Text(date.formatted(date: .long, time: .omitted)))
+		.navigationTitle(Text(date.stringWithRelativeFormatting()))
     } // body
 } // view
 

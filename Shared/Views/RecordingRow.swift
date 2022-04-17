@@ -33,6 +33,8 @@ confirmationDialogIsShown = true
 			}
 		} // HStack
 		.padding()
+		.frame(maxWidth: .infinity)
+		.frame(height: 50)
 		.confirmationDialog("Delete \(recording.description)?",
 							isPresented: $confirmationDialogIsShown,
 							titleVisibility: .visible,
