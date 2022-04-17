@@ -13,6 +13,8 @@
 		0482C606280BC3CF00FB2B8B /* RecordingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C604280BC3CF00FB2B8B /* RecordingExtension.swift */; };
 		0482C60A280BCA2D00FB2B8B /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C609280BCA2D00FB2B8B /* AudioPlayer.swift */; };
 		0482C60B280BCA2D00FB2B8B /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C609280BCA2D00FB2B8B /* AudioPlayer.swift */; };
+		0482C60E280C367B00FB2B8B /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C60D280C367B00FB2B8B /* DateExtensions.swift */; };
+		0482C60F280C367B00FB2B8B /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C60D280C367B00FB2B8B /* DateExtensions.swift */; };
 		04D378D3280AE984008077EE /* AudioDiary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04D378C0280AE983008077EE /* AudioDiary.xcdatamodeld */; };
 		04D378D4280AE984008077EE /* AudioDiary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04D378C0280AE983008077EE /* AudioDiary.xcdatamodeld */; };
 		04D378D5280AE984008077EE /* AudioDiaryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D378C2280AE983008077EE /* AudioDiaryApp.swift */; };
@@ -38,6 +40,7 @@
 		0482C604280BC3CF00FB2B8B /* RecordingExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingExtension.swift; sourceTree = "<group>"; };
 		0482C609280BCA2D00FB2B8B /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		0482C60C280BD63300FB2B8B /* todo.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = todo.md; sourceTree = "<group>"; };
+		0482C60D280C367B00FB2B8B /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		04D378C1280AE983008077EE /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		04D378C2280AE983008077EE /* AudioDiaryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioDiaryApp.swift; sourceTree = "<group>"; };
 		04D378C3280AE983008077EE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -79,6 +82,7 @@
 				04D378E5280AEA30008077EE /* Recording.swift */,
 				0482C604280BC3CF00FB2B8B /* RecordingExtension.swift */,
 				04D378C4280AE983008077EE /* Persistence.swift */,
+				0482C60D280C367B00FB2B8B /* DateExtensions.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -237,6 +241,7 @@
 				0482C60A280BCA2D00FB2B8B /* AudioPlayer.swift in Sources */,
 				04D378E9280AECC6008077EE /* AudioRecorder.swift in Sources */,
 				04D378D5280AE984008077EE /* AudioDiaryApp.swift in Sources */,
+				0482C60E280C367B00FB2B8B /* DateExtensions.swift in Sources */,
 				04D378EF280AF460008077EE /* RecordingsList.swift in Sources */,
 				04D378D9280AE984008077EE /* Persistence.swift in Sources */,
 				04D378D3280AE984008077EE /* AudioDiary.xcdatamodeld in Sources */,
@@ -255,6 +260,7 @@
 				0482C60B280BCA2D00FB2B8B /* AudioPlayer.swift in Sources */,
 				04D378EA280AECC6008077EE /* AudioRecorder.swift in Sources */,
 				04D378D6280AE984008077EE /* AudioDiaryApp.swift in Sources */,
+				0482C60F280C367B00FB2B8B /* DateExtensions.swift in Sources */,
 				04D378F0280AF460008077EE /* RecordingsList.swift in Sources */,
 				04D378DA280AE984008077EE /* Persistence.swift in Sources */,
 				04D378D4280AE984008077EE /* AudioDiary.xcdatamodeld in Sources */,

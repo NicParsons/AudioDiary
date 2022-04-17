@@ -9,7 +9,7 @@ struct DayView: View {
     var body: some View {
 		NavigationView {
 		VStack {
-			RecordingsList(recordings: audioRecorder.recordings)
+			RecordingsList(recordings: audioRecorder.recordings(for: date))
 
 			Spacer()
 

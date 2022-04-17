@@ -52,7 +52,7 @@ audioRecorder = try AVAudioRecorder(url: filePath, settings: recordingSettings)
 		audioRecorder!.stop()
 		isRecording = false
 		print("Recording stopped.")
-		fetchRecordings()
+		fetchAllRecordings()
 	} // func
 
 	func newFileURL() -> URL {
@@ -69,7 +69,7 @@ audioRecorder = try AVAudioRecorder(url: filePath, settings: recordingSettings)
 		return filePath
 	}
 
-	func fetchRecordings() {
+	func fetchAllRecordings() {
 		print("Fetching recordings.")
 
 		// empty the array so we don't end up with duplicates
@@ -90,17 +90,21 @@ audioRecorder = try AVAudioRecorder(url: filePath, settings: recordingSettings)
 		} // end do try catch
 	} // func
 
+	func recordings(for date: Date) -> [Recording] {
+		return recordings.filter( { $0.calendarDate.isOnTheSameDay(as: date)} )
+	} // func
+
 	func delete(_ recording: Recording) {
 		let url = recording.fileURL
 		delete(url)
-fetchRecordings()
+		fetchAllRecordings()
 	}
 
 	func delete(_ urlsToDelete: [URL]) {
 			for url in urlsToDelete {
 				delete(url)
 			} // loop
-		fetchRecordings()
+		fetchAllRecordings()
 	} // func
 
 	func delete(_ url: URL) {
@@ -115,7 +119,7 @@ fetchRecordings()
 
 	override init() {
 		super.init()
-		fetchRecordings()
+		fetchAllRecordings()
 	}
 } // class
 

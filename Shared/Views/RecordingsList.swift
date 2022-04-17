@@ -2,6 +2,7 @@ import SwiftUI
 
 struct RecordingsList: View {
 	@EnvironmentObject var audioRecorder: AudioRecorder
+	// @ObservedObject var audioPlayer = AudioPlayer()
 	var recordings: [Recording]
 	@State private var selected: Recording?
 
@@ -16,6 +17,7 @@ RecordingRow(recording: recording)
 	func delete(_ selected: Recording?) {
 					if let file = selected {
 						audioRecorder.delete(file)
+						// if audioPlayer.isPlaying && audioPlayer.audioPlayer.url == file.fileURL { audioPlayer.stopPlaying() }
 					} // end if let
 	} // func
 
