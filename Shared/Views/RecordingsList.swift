@@ -14,8 +14,8 @@ RecordingRow(recording: recording)
     } // body
 
 	func delete(_ selected: Recording?) {
-					if let selected = selected {
-						audioRecorder.delete(selected.fileURL)
+					if let file = selected {
+						audioRecorder.delete(file)
 					} // end if let
 	} // func
 
