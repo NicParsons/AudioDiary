@@ -8,7 +8,7 @@ struct RecordingRow: View {
 
     var body: some View {
 		HStack {
-			Text(recording.timeStamp)
+			Text(recording.shortDescription)
 			Spacer()
 			if !audioPlayer.isPlaying {
 				Button(action: {

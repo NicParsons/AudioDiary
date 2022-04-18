@@ -29,6 +29,10 @@ return creationDate
 	var description: String {
 		return "diary entry for \(calendarDate.formatted(date: .abbreviated, time: .omitted)) at \(calendarDate.formatted(date: .omitted, time: .shortened))"
 	}
+
+	var shortDescription: String {
+		return "Entry at \(timeStamp)"
+	}
 }
 
 //
