@@ -31,7 +31,7 @@ return creationDate
 	}
 
 	var shortDescription: String {
-		return "Entry at \(timeStamp)"
+		return "entry at \(timeStamp)"
 	}
 }
 

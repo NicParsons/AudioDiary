@@ -8,7 +8,7 @@ struct RecordingRow: View {
 
     var body: some View {
 		HStack {
-			Text(recording.shortDescription)
+			Text(recording.shortDescription.capitalizingFirstLetter())
 			Spacer()
 			if !audioPlayer.isPlaying {
 				Button(action: {
