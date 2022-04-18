@@ -8,9 +8,15 @@ struct AudioDiaryApp: App {
     var body: some Scene {
         WindowGroup {
             // ContentView()
-			CalendarList()
+			#if os(macOS)
+			HomeScreen()
 				.environmentObject(audioRecorder)
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+				.environment(\.managedObjectContext, persistenceController.container.viewContext)
+			#else
+			TodayView()
+				.environmentObject(audioRecorder)
+				.environment(\.managedObjectContext, persistenceController.container.viewContext)
+			#endif
         }
     }
 }

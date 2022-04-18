@@ -21,6 +21,8 @@
 		0482C615280CDFAF00FB2B8B /* CalendarDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C613280CDFAF00FB2B8B /* CalendarDay.swift */; };
 		0482C617280CE52F00FB2B8B /* CalendarList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C616280CE52F00FB2B8B /* CalendarList.swift */; };
 		0482C618280CE52F00FB2B8B /* CalendarList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C616280CE52F00FB2B8B /* CalendarList.swift */; };
+		0482C61C280CEE5300FB2B8B /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C61B280CEE5300FB2B8B /* HomeScreen.swift */; };
+		0482C61E280CEE9B00FB2B8B /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C61D280CEE9B00FB2B8B /* Sidebar.swift */; };
 		04D378D3280AE984008077EE /* AudioDiary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04D378C0280AE983008077EE /* AudioDiary.xcdatamodeld */; };
 		04D378D4280AE984008077EE /* AudioDiary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04D378C0280AE983008077EE /* AudioDiary.xcdatamodeld */; };
 		04D378D5280AE984008077EE /* AudioDiaryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D378C2280AE983008077EE /* AudioDiaryApp.swift */; };
@@ -50,6 +52,8 @@
 		0482C610280C39A000FB2B8B /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
 		0482C613280CDFAF00FB2B8B /* CalendarDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDay.swift; sourceTree = "<group>"; };
 		0482C616280CE52F00FB2B8B /* CalendarList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarList.swift; sourceTree = "<group>"; };
+		0482C61B280CEE5300FB2B8B /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		0482C61D280CEE9B00FB2B8B /* Sidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sidebar.swift; sourceTree = "<group>"; };
 		04D378C1280AE983008077EE /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		04D378C2280AE983008077EE /* AudioDiaryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioDiaryApp.swift; sourceTree = "<group>"; };
 		04D378C3280AE983008077EE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -162,6 +166,8 @@
 			isa = PBXGroup;
 			children = (
 				04D378D2280AE984008077EE /* macOS.entitlements */,
+				0482C61B280CEE5300FB2B8B /* HomeScreen.swift */,
+				0482C61D280CEE9B00FB2B8B /* Sidebar.swift */,
 			);
 			path = macOS;
 			sourceTree = "<group>";
@@ -290,8 +296,10 @@
 				0482C606280BC3CF00FB2B8B /* RecordingExtension.swift in Sources */,
 				0482C615280CDFAF00FB2B8B /* CalendarDay.swift in Sources */,
 				0482C60B280BCA2D00FB2B8B /* AudioPlayer.swift in Sources */,
+				0482C61C280CEE5300FB2B8B /* HomeScreen.swift in Sources */,
 				04D378EA280AECC6008077EE /* AudioRecorder.swift in Sources */,
 				04D378D6280AE984008077EE /* AudioDiaryApp.swift in Sources */,
+				0482C61E280CEE9B00FB2B8B /* Sidebar.swift in Sources */,
 				0482C60F280C367B00FB2B8B /* DateExtensions.swift in Sources */,
 				0482C612280C39A000FB2B8B /* TodayView.swift in Sources */,
 				0482C618280CE52F00FB2B8B /* CalendarList.swift in Sources */,
