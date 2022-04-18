@@ -8,7 +8,7 @@ struct AudioDiaryApp: App {
     var body: some Scene {
         WindowGroup {
             // ContentView()
-			TodayView()
+			CalendarList()
 				.environmentObject(audioRecorder)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }

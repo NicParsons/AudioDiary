@@ -7,6 +7,24 @@ class AudioRecorder: NSObject, ObservableObject {
 	@Published var isRecording = false
 	@Published var recordings: [Recording] = []
 
+	var recordingsByDay: [CalendarDay] {
+		// this code might take too long to be in a computed property
+		var days = [CalendarDay]()
+		for recording in recordings {
+			if days.contains(where: { recording.calendarDate.isOnTheSameDay(as: $0.date) }) {
+// add it to the relevant element of days
+				if let index = days.firstIndex(where: { recording.calendarDate.isOnTheSameDay(as: $0.date) }) {
+					days[index].diaryEntries.append(recording)
+				}
+			} else {
+				var newDay = CalendarDay(for: recording.calendarDate)
+				newDay.diaryEntries.append(recording)
+				days.append(newDay)
+			} // end if
+		} // end loop
+		return days
+	} // end var
+
 	var recordingSettings = [
 		AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
 		   AVSampleRateKey: 12000,
