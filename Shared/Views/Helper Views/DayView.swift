@@ -2,29 +2,29 @@ import SwiftUI
 import AVFoundation
 
 struct DayView: View {
-	@EnvironmentObject var audioRecorder: AudioRecorder
+	@EnvironmentObject var model: Model
 	@State private var alertIsPresent = false
 	let date: Date
 
     var body: some View {
 		NavigationView {
 		VStack {
-			RecordingsList(recordings: audioRecorder.recordings(for: date))
+			RecordingsList(recordings: model.recordings(for: date))
 
 			Spacer()
 
-			if !audioRecorder.isRecording {
+			if !model.isRecording {
 				// display the record button
 				Button(
 					action: {
 						switch AVCaptureDevice.authorizationStatus(for: .audio) {
 						case .authorized:
-							self.audioRecorder.startRecording()
+							self.model.startRecording()
 						case .notDetermined:
 							print("About to prompt for access to the microphone.")
 							AVCaptureDevice.requestAccess(for: .audio) { granted in
 								if granted {
-									self.audioRecorder.startRecording()
+									self.model.startRecording()
 								} else {
 									print("The user denied access to the microphone.")
 								} // end if access granted
@@ -43,7 +43,7 @@ Label("Record", systemImage: "record.circle")
 			} else {
 				// display the stop button
 				Button(
-					action: { self.audioRecorder.stopRecording() }) {
+					action: { self.model.stopRecording() }) {
 					Label("Stop", systemImage: "stop.circle")
 				}
 				.foregroundColor(.red)
@@ -64,7 +64,7 @@ Label("Record", systemImage: "record.circle")
 struct DayView_Previews: PreviewProvider {
     static var previews: some View {
 		DayView(date: Date())
-			.environmentObject(AudioRecorder())
+			.environmentObject(Model())
     }
 }
 

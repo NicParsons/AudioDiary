@@ -2,28 +2,17 @@ import SwiftUI
 
 struct RecordingRow: View {
 	let recording: Recording
-	@EnvironmentObject var audioRecorder: AudioRecorder
-	@ObservedObject var audioPlayer = AudioPlayer()
+	@EnvironmentObject var model: Model
 	@State private var confirmationDialogIsShown = false
 
     var body: some View {
 		HStack {
 			Text(recording.shortDescription.capitalizingFirstLetter())
 			Spacer()
-			if !audioPlayer.isPlaying {
-				Button(action: {
-					audioPlayer.startPlaying(recording.fileURL)
-				}) {
-					Label("Play", systemImage: "play.circle")
-				} // button
-				.foregroundColor(.green)
+			if !model.isPlaying {
+				PlayButton(recordingID: recording.id)
 			} else {
-				Button(action: {
-					audioPlayer.stopPlaying()
-				}) {
-					Label("Stop", systemImage: "stop.circle")
-				} // button
-				.foregroundColor(.red)
+				StopPlayingButton()
 			} // end if isPlaying
 
 			Button(action: {
@@ -40,9 +29,7 @@ confirmationDialogIsShown = true
 							titleVisibility: .visible,
 							presenting: recording) { _ in
 			Button(role: .destructive) {
-				audioRecorder.delete(recording)
-				// stop playback if the deleted file is currently playing
-				if audioPlayer.isPlaying && audioPlayer.audioPlayer.url == recording.fileURL { audioPlayer.stopPlaying() }
+				model.delete(recording)
 		} label: {
 			Text("Delete")
 			} // button
@@ -54,11 +41,11 @@ confirmationDialogIsShown = true
 		} // confirmation dialog
 
 		// accessibility actions
-		.accessibilityAction(named: Text(audioPlayer.isPlaying ? "Stop" : "Play")) {
-			if audioPlayer.isPlaying {
-				audioPlayer.stopPlaying()
+		.accessibilityAction(named: Text(model.isPlaying ? "Pause" : "Play")) {
+			if model.isPlaying {
+				model.pause()
 			} else {
-				audioPlayer.startPlaying(recording.fileURL)
+				model.startPlaying(recording.fileURL)
 			} // end if
 		} // end action
 		.accessibilityAction(named: Text("Delete")) {
@@ -69,7 +56,8 @@ confirmationDialogIsShown = true
 
 struct RecordingRow_Previews: PreviewProvider {
     static var previews: some View {
-		RecordingRow(recording: Recording(fileURL: AudioRecorder().dummyURL()))
+		RecordingRow(recording: Recording(fileURL: Model().dummyURL()))
+			.environmentObject(Model())
     }
 }
 

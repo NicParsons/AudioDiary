@@ -1,6 +1,6 @@
 import Foundation
 
-extension AudioRecorder {
+extension Model {
 	func dummyURL() -> URL {
 	let fileManager = 		FileManager.default
 	let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]

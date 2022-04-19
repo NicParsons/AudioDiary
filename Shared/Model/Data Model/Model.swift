@@ -2,9 +2,11 @@ import Foundation
 import Combine
 import AVFoundation
 
-class AudioRecorder: NSObject, ObservableObject {
+class Model: NSObject, ObservableObject, AVAudioPlayerDelegate {
 	var audioRecorder: AVAudioRecorder!
+	var audioPlayer: AVAudioPlayer!
 	@Published var isRecording = false
+	@Published var isPlaying = false
 	@Published var recordings: [Recording] = []
 
 	var recordingsByDay: [CalendarDay] {
@@ -24,6 +26,14 @@ class AudioRecorder: NSObject, ObservableObject {
 		} // end loop
 		return days
 	} // end var
+
+	subscript(id: UUID) -> Recording? {
+		get {
+			return recordings.first(where: { $0.id == id })
+		} set {
+			if let newValue = newValue, let index = recordings.firstIndex(where: { $0.id == id }) { recordings[index] = newValue }
+		} // end setter
+	} // end subscript
 
 	var recordingSettings = [
 		AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
@@ -130,21 +140,75 @@ audioRecorder = try AVAudioRecorder(url: filePath, settings: recordingSettings)
 		do {
 		   try FileManager.default.removeItem(at: url)
 			print("File deleted.")
+			if isPlaying && audioPlayer.url == url { self.stopPlaying() }
 		} catch {
 			print("Could not delete \(url). The error was: \(error.localizedDescription)")
 		} // do try catch
 	}
 
+	func startPlaying(_ audio: URL) {
+		if isPlaying { stopPlaying() }
+
+print("About to play \(audio).")
+
+		#if os(iOS)
+		let playbackSession = AVAudioSession.sharedInstance()
+		do {
+					try playbackSession.overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
+				} catch {
+					print("Couldn't play over the device's loud speaker.")
+				}
+		#endif
+
+		do {
+					audioPlayer = try AVAudioPlayer(contentsOf: audio)
+			audioPlayer.delegate = self
+					audioPlayer.play()
+			DispatchQueue.main.async {
+				self.isPlaying = true
+			} // main queue
+			print("Started playing \(audio).")
+				} catch {
+					print("Playback failed.")
+				}
+	} // func
+
+	func pause() {
+		print("Pausing playback.")
+		if isPlaying { audioPlayer.pause() }
+		DispatchQueue.main.async {
+			self.isPlaying = false
+		}
+print("Playback paused.")
+	}
+
+	func stopPlaying() {
+		print("Stopping playback.")
+		// UI logic should mean that the stop button can only be pressed if isPlaying
+		// but let's make doubly sure
+		// because if nothing has yet been played the audioPlayer will be nil
+		if isPlaying { audioPlayer.stop() }
+		DispatchQueue.main.async {
+			self.isPlaying = false
+		}
+		print("Playback stopped.")
+	} // func
+
+	func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+			if flag {
+				DispatchQueue.main.async {
+					self.isPlaying = false
+				} // main queue
+			} // end if
+		} // func
+
 	override init() {
 		super.init()
 		fetchAllRecordings()
 	}
+
 } // class
 
-//
-//  AudioRecorder.swift
+//  Model.swift
 //  AudioDiary
-//
-//  Created by Nicholas Parsons on 16/4/2022.
-//
-
+//  Created by Nicholas Parsons on 18/4/2022.

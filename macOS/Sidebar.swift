@@ -14,7 +14,7 @@ NavigationLink(
 	tag: .today,
 selection: $selected
 ) {
-Label("Today", systemImage: "record.circle")
+	TodayViewLabel()
 } // NavigationLink
 
 			NavigationLink(
@@ -22,7 +22,7 @@ Label("Today", systemImage: "record.circle")
 				tag: .list,
 				selection: $selected
 			) {
-				Label("Journal", systemImage: "book.circle")
+				ListViewLabel()
 			} // NavigationLink
 		} // List
 		.listStyle(.sidebar)

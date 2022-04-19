@@ -2,26 +2,22 @@ import SwiftUI
 
 @main
 struct AudioDiaryApp: App {
-	@StateObject var audioRecorder = AudioRecorder()
+	@StateObject var model = Model()
     let persistenceController = PersistenceController.shared
 
     var body: some Scene {
         WindowGroup {
             // ContentView()
-			#if os(macOS)
 			HomeScreen()
-				.environmentObject(audioRecorder)
+				.environmentObject(model)
 				.environment(\.managedObjectContext, persistenceController.container.viewContext)
-			#else
-			TodayView()
-				.environmentObject(audioRecorder)
-				.environment(\.managedObjectContext, persistenceController.container.viewContext)
-			#endif
         }
-    }
-}
+		.commands {
+			PlaybackControlsMenu()
+		}
+    } // body
+} // App
 
-//
 //  AudioDiaryApp.swift
 //  Shared
 //

@@ -7,12 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04133956280E25FD0093A4C1 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04133955280E25FD0093A4C1 /* HomeScreen.swift */; };
 		0482C602280BC08800FB2B8B /* RecordingRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C601280BC08800FB2B8B /* RecordingRow.swift */; };
 		0482C603280BC08800FB2B8B /* RecordingRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C601280BC08800FB2B8B /* RecordingRow.swift */; };
 		0482C605280BC3CF00FB2B8B /* RecordingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C604280BC3CF00FB2B8B /* RecordingExtension.swift */; };
 		0482C606280BC3CF00FB2B8B /* RecordingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C604280BC3CF00FB2B8B /* RecordingExtension.swift */; };
-		0482C60A280BCA2D00FB2B8B /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C609280BCA2D00FB2B8B /* AudioPlayer.swift */; };
-		0482C60B280BCA2D00FB2B8B /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C609280BCA2D00FB2B8B /* AudioPlayer.swift */; };
 		0482C60E280C367B00FB2B8B /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C60D280C367B00FB2B8B /* DateExtensions.swift */; };
 		0482C60F280C367B00FB2B8B /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C60D280C367B00FB2B8B /* DateExtensions.swift */; };
 		0482C611280C39A000FB2B8B /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C610280C39A000FB2B8B /* TodayView.swift */; };
@@ -25,6 +24,20 @@
 		0482C61E280CEE9B00FB2B8B /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C61D280CEE9B00FB2B8B /* Sidebar.swift */; };
 		0482C620280CFBAD00FB2B8B /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C61F280CFBAD00FB2B8B /* StringExtension.swift */; };
 		0482C621280CFBAD00FB2B8B /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C61F280CFBAD00FB2B8B /* StringExtension.swift */; };
+		0482C627280D010B00FB2B8B /* PlaybackControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C626280D010B00FB2B8B /* PlaybackControls.swift */; };
+		0482C628280D010B00FB2B8B /* PlaybackControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C626280D010B00FB2B8B /* PlaybackControls.swift */; };
+		0482C62A280D227500FB2B8B /* PlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C629280D227500FB2B8B /* PlayButton.swift */; };
+		0482C62B280D227500FB2B8B /* PlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C629280D227500FB2B8B /* PlayButton.swift */; };
+		0482C62D280D22EE00FB2B8B /* StopPlayingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C62C280D22EE00FB2B8B /* StopPlayingButton.swift */; };
+		0482C62E280D22EE00FB2B8B /* StopPlayingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C62C280D22EE00FB2B8B /* StopPlayingButton.swift */; };
+		0482C630280D367E00FB2B8B /* FocusValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C62F280D367E00FB2B8B /* FocusValues.swift */; };
+		0482C631280D367E00FB2B8B /* FocusValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C62F280D367E00FB2B8B /* FocusValues.swift */; };
+		0482C635280D72DC00FB2B8B /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C634280D72DC00FB2B8B /* Model.swift */; };
+		0482C636280D72DC00FB2B8B /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C634280D72DC00FB2B8B /* Model.swift */; };
+		0482C638280E1E3600FB2B8B /* TodayViewLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C637280E1E3600FB2B8B /* TodayViewLabel.swift */; };
+		0482C639280E1E3600FB2B8B /* TodayViewLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C637280E1E3600FB2B8B /* TodayViewLabel.swift */; };
+		0482C63B280E1EDA00FB2B8B /* ListViewLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C63A280E1EDA00FB2B8B /* ListViewLabel.swift */; };
+		0482C63C280E1EDA00FB2B8B /* ListViewLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C63A280E1EDA00FB2B8B /* ListViewLabel.swift */; };
 		04D378D3280AE984008077EE /* AudioDiary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04D378C0280AE983008077EE /* AudioDiary.xcdatamodeld */; };
 		04D378D4280AE984008077EE /* AudioDiary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04D378C0280AE983008077EE /* AudioDiary.xcdatamodeld */; };
 		04D378D5280AE984008077EE /* AudioDiaryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D378C2280AE983008077EE /* AudioDiaryApp.swift */; };
@@ -37,8 +50,6 @@
 		04D378DC280AE984008077EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04D378C5280AE984008077EE /* Assets.xcassets */; };
 		04D378E6280AEA30008077EE /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D378E5280AEA30008077EE /* Recording.swift */; };
 		04D378E7280AEA30008077EE /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D378E5280AEA30008077EE /* Recording.swift */; };
-		04D378E9280AECC6008077EE /* AudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D378E8280AECC6008077EE /* AudioRecorder.swift */; };
-		04D378EA280AECC6008077EE /* AudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D378E8280AECC6008077EE /* AudioRecorder.swift */; };
 		04D378EC280AF11B008077EE /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D378EB280AF11B008077EE /* DayView.swift */; };
 		04D378ED280AF11B008077EE /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D378EB280AF11B008077EE /* DayView.swift */; };
 		04D378EF280AF460008077EE /* RecordingsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D378EE280AF460008077EE /* RecordingsList.swift */; };
@@ -46,9 +57,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04133955280E25FD0093A4C1 /* HomeScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeScreen.swift; path = iOS/HomeScreen.swift; sourceTree = SOURCE_ROOT; };
 		0482C601280BC08800FB2B8B /* RecordingRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingRow.swift; sourceTree = "<group>"; };
 		0482C604280BC3CF00FB2B8B /* RecordingExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingExtension.swift; sourceTree = "<group>"; };
-		0482C609280BCA2D00FB2B8B /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		0482C60C280BD63300FB2B8B /* todo.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = todo.md; sourceTree = "<group>"; };
 		0482C60D280C367B00FB2B8B /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		0482C610280C39A000FB2B8B /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
@@ -57,6 +68,13 @@
 		0482C61B280CEE5300FB2B8B /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		0482C61D280CEE9B00FB2B8B /* Sidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sidebar.swift; sourceTree = "<group>"; };
 		0482C61F280CFBAD00FB2B8B /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		0482C626280D010B00FB2B8B /* PlaybackControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackControls.swift; sourceTree = "<group>"; };
+		0482C629280D227500FB2B8B /* PlayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayButton.swift; sourceTree = "<group>"; };
+		0482C62C280D22EE00FB2B8B /* StopPlayingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopPlayingButton.swift; sourceTree = "<group>"; };
+		0482C62F280D367E00FB2B8B /* FocusValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusValues.swift; sourceTree = "<group>"; };
+		0482C634280D72DC00FB2B8B /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		0482C637280E1E3600FB2B8B /* TodayViewLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewLabel.swift; sourceTree = "<group>"; };
+		0482C63A280E1EDA00FB2B8B /* ListViewLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewLabel.swift; sourceTree = "<group>"; };
 		04D378C1280AE983008077EE /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		04D378C2280AE983008077EE /* AudioDiaryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioDiaryApp.swift; sourceTree = "<group>"; };
 		04D378C3280AE983008077EE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -66,10 +84,9 @@
 		04D378D0280AE984008077EE /* AudioDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04D378D2280AE984008077EE /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		04D378E5280AEA30008077EE /* Recording.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
-		04D378E8280AECC6008077EE /* AudioRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorder.swift; sourceTree = "<group>"; };
 		04D378EB280AF11B008077EE /* DayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
 		04D378EE280AF460008077EE /* RecordingsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingsList.swift; sourceTree = "<group>"; };
-		04D378F1280B1194008077EE /* AudioDiary--macOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "AudioDiary--macOS--Info.plist"; sourceTree = "<group>"; };
+		04D378F1280B1194008077EE /* AudioDiary--macOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AudioDiary--macOS--Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,17 +107,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04133954280E25FD0093A4C1 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				04133955280E25FD0093A4C1 /* HomeScreen.swift */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
 		0482C607280BC76700FB2B8B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				04D378E8280AECC6008077EE /* AudioRecorder.swift */,
-				0482C609280BCA2D00FB2B8B /* AudioPlayer.swift */,
-				04D378E5280AEA30008077EE /* Recording.swift */,
-				0482C613280CDFAF00FB2B8B /* CalendarDay.swift */,
-				0482C604280BC3CF00FB2B8B /* RecordingExtension.swift */,
+				0482C624280CFF8500FB2B8B /* Data Model */,
+				0482C625280CFF9400FB2B8B /* Data Structures */,
 				04D378C4280AE983008077EE /* Persistence.swift */,
-				0482C60D280C367B00FB2B8B /* DateExtensions.swift */,
-				0482C61F280CFBAD00FB2B8B /* StringExtension.swift */,
+				0482C623280CFE0D00FB2B8B /* Extensions */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -108,8 +129,12 @@
 		0482C608280BC77700FB2B8B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0482C63D280E1EFA00FB2B8B /* Labels */,
 				0482C619280CE8AD00FB2B8B /* Navigation */,
 				0482C61A280CE8C800FB2B8B /* Helper Views */,
+				0482C633280D394800FB2B8B /* MenuBar */,
+				0482C632280D391D00FB2B8B /* Buttons */,
+				0482C62F280D367E00FB2B8B /* FocusValues.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -134,13 +159,75 @@
 			path = "Helper Views";
 			sourceTree = "<group>";
 		};
+		0482C622280CFD7700FB2B8B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				04D378C5280AE984008077EE /* Assets.xcassets */,
+				04D378C0280AE983008077EE /* AudioDiary.xcdatamodeld */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		0482C623280CFE0D00FB2B8B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0482C604280BC3CF00FB2B8B /* RecordingExtension.swift */,
+				0482C60D280C367B00FB2B8B /* DateExtensions.swift */,
+				0482C61F280CFBAD00FB2B8B /* StringExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0482C624280CFF8500FB2B8B /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				0482C634280D72DC00FB2B8B /* Model.swift */,
+			);
+			path = "Data Model";
+			sourceTree = "<group>";
+		};
+		0482C625280CFF9400FB2B8B /* Data Structures */ = {
+			isa = PBXGroup;
+			children = (
+				04D378E5280AEA30008077EE /* Recording.swift */,
+				0482C613280CDFAF00FB2B8B /* CalendarDay.swift */,
+			);
+			path = "Data Structures";
+			sourceTree = "<group>";
+		};
+		0482C632280D391D00FB2B8B /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				0482C629280D227500FB2B8B /* PlayButton.swift */,
+				0482C62C280D22EE00FB2B8B /* StopPlayingButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		0482C633280D394800FB2B8B /* MenuBar */ = {
+			isa = PBXGroup;
+			children = (
+				0482C626280D010B00FB2B8B /* PlaybackControls.swift */,
+			);
+			path = MenuBar;
+			sourceTree = "<group>";
+		};
+		0482C63D280E1EFA00FB2B8B /* Labels */ = {
+			isa = PBXGroup;
+			children = (
+				0482C637280E1E3600FB2B8B /* TodayViewLabel.swift */,
+				0482C63A280E1EDA00FB2B8B /* ListViewLabel.swift */,
+			);
+			path = Labels;
+			sourceTree = "<group>";
+		};
 		04D378BA280AE983008077EE = {
 			isa = PBXGroup;
 			children = (
-				04D378F1280B1194008077EE /* AudioDiary--macOS--Info.plist */,
 				0482C60C280BD63300FB2B8B /* todo.md */,
 				04D378BF280AE983008077EE /* Shared */,
 				04D378D1280AE984008077EE /* macOS */,
+				04133954280E25FD0093A4C1 /* iOS */,
 				04D378CB280AE984008077EE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -151,8 +238,7 @@
 				04D378C2280AE983008077EE /* AudioDiaryApp.swift */,
 				0482C608280BC77700FB2B8B /* Views */,
 				0482C607280BC76700FB2B8B /* Model */,
-				04D378C5280AE984008077EE /* Assets.xcassets */,
-				04D378C0280AE983008077EE /* AudioDiary.xcdatamodeld */,
+				0482C622280CFD7700FB2B8B /* Resources */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -170,6 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				04D378D2280AE984008077EE /* macOS.entitlements */,
+				04D378F1280B1194008077EE /* AudioDiary--macOS--Info.plist */,
 				0482C61B280CEE5300FB2B8B /* HomeScreen.swift */,
 				0482C61D280CEE9B00FB2B8B /* Sidebar.swift */,
 			);
@@ -274,21 +361,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0482C635280D72DC00FB2B8B /* Model.swift in Sources */,
 				04D378EC280AF11B008077EE /* DayView.swift in Sources */,
 				0482C605280BC3CF00FB2B8B /* RecordingExtension.swift in Sources */,
 				0482C614280CDFAF00FB2B8B /* CalendarDay.swift in Sources */,
-				0482C60A280BCA2D00FB2B8B /* AudioPlayer.swift in Sources */,
+				0482C63B280E1EDA00FB2B8B /* ListViewLabel.swift in Sources */,
 				0482C620280CFBAD00FB2B8B /* StringExtension.swift in Sources */,
-				04D378E9280AECC6008077EE /* AudioRecorder.swift in Sources */,
 				04D378D5280AE984008077EE /* AudioDiaryApp.swift in Sources */,
 				0482C60E280C367B00FB2B8B /* DateExtensions.swift in Sources */,
 				0482C611280C39A000FB2B8B /* TodayView.swift in Sources */,
 				0482C617280CE52F00FB2B8B /* CalendarList.swift in Sources */,
 				04D378EF280AF460008077EE /* RecordingsList.swift in Sources */,
+				0482C62A280D227500FB2B8B /* PlayButton.swift in Sources */,
 				04D378D9280AE984008077EE /* Persistence.swift in Sources */,
 				04D378D3280AE984008077EE /* AudioDiary.xcdatamodeld in Sources */,
+				0482C627280D010B00FB2B8B /* PlaybackControls.swift in Sources */,
 				04D378D7280AE984008077EE /* ContentView.swift in Sources */,
+				0482C638280E1E3600FB2B8B /* TodayViewLabel.swift in Sources */,
+				0482C630280D367E00FB2B8B /* FocusValues.swift in Sources */,
 				04D378E6280AEA30008077EE /* Recording.swift in Sources */,
+				04133956280E25FD0093A4C1 /* HomeScreen.swift in Sources */,
+				0482C62D280D22EE00FB2B8B /* StopPlayingButton.swift in Sources */,
 				0482C602280BC08800FB2B8B /* RecordingRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,21 +390,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0482C631280D367E00FB2B8B /* FocusValues.swift in Sources */,
 				04D378ED280AF11B008077EE /* DayView.swift in Sources */,
+				0482C62B280D227500FB2B8B /* PlayButton.swift in Sources */,
 				0482C606280BC3CF00FB2B8B /* RecordingExtension.swift in Sources */,
 				0482C615280CDFAF00FB2B8B /* CalendarDay.swift in Sources */,
-				0482C60B280BCA2D00FB2B8B /* AudioPlayer.swift in Sources */,
 				0482C61C280CEE5300FB2B8B /* HomeScreen.swift in Sources */,
-				04D378EA280AECC6008077EE /* AudioRecorder.swift in Sources */,
 				04D378D6280AE984008077EE /* AudioDiaryApp.swift in Sources */,
 				0482C61E280CEE9B00FB2B8B /* Sidebar.swift in Sources */,
 				0482C60F280C367B00FB2B8B /* DateExtensions.swift in Sources */,
 				0482C612280C39A000FB2B8B /* TodayView.swift in Sources */,
 				0482C618280CE52F00FB2B8B /* CalendarList.swift in Sources */,
 				04D378F0280AF460008077EE /* RecordingsList.swift in Sources */,
+				0482C636280D72DC00FB2B8B /* Model.swift in Sources */,
 				04D378DA280AE984008077EE /* Persistence.swift in Sources */,
+				0482C628280D010B00FB2B8B /* PlaybackControls.swift in Sources */,
+				0482C639280E1E3600FB2B8B /* TodayViewLabel.swift in Sources */,
 				04D378D4280AE984008077EE /* AudioDiary.xcdatamodeld in Sources */,
 				0482C621280CFBAD00FB2B8B /* StringExtension.swift in Sources */,
+				0482C62E280D22EE00FB2B8B /* StopPlayingButton.swift in Sources */,
+				0482C63C280E1EDA00FB2B8B /* ListViewLabel.swift in Sources */,
 				04D378D8280AE984008077EE /* ContentView.swift in Sources */,
 				04D378E7280AEA30008077EE /* Recording.swift in Sources */,
 				0482C603280BC08800FB2B8B /* RecordingRow.swift in Sources */,
@@ -512,7 +610,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "AudioDiary--macOS--Info.plist";
+				INFOPLIST_FILE = "macOS/AudioDiary--macOS--Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "AudioDiary needs access to the microphone to record your diary entry.";
@@ -543,7 +641,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "AudioDiary--macOS--Info.plist";
+				INFOPLIST_FILE = "macOS/AudioDiary--macOS--Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "AudioDiary needs access to the microphone to record your diary entry.";
