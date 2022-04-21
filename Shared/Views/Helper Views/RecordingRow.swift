@@ -40,6 +40,12 @@ confirmationDialogIsShown = true
 			Text("This action cannot be undone.")
 		} // confirmation dialog
 
+		// macOS automatically combines the RecordingRow into one accessibility element which VoiceOver can interact with to access the child elements
+		// but on iOS the elements are separate by default which makes navigating more verbose and will make it difficult to know which play/delete button relates to which entry
+#if os(iOS)
+.accessibilityElement(children: .combine)
+#endif
+
 		// accessibility actions
 		.accessibilityAction(named: Text(model.isPlaying ? "Pause" : "Play")) {
 			if model.isPlaying {
