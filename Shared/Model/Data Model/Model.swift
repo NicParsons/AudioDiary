@@ -37,7 +37,7 @@ class Model: NSObject, ObservableObject, AVAudioPlayerDelegate {
 
 	var recordingSettings = [
 		AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
-		   AVSampleRateKey: 12000,
+		   AVSampleRateKey: 24000, // same as Apple VoiceMemos
 		   AVNumberOfChannelsKey: 1,
 		   AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
 	   ]
@@ -84,7 +84,7 @@ audioRecorder = try AVAudioRecorder(url: filePath, settings: recordingSettings)
 	} // func
 
 	func newFileURL() -> URL {
-		let fileName = "diary entry"
+		let fileName = "Diary Entry"
 		let fileExtension = ".m4a"
 		let documentPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
 		let iso8601Date = Date().ISO8601Format(.init(dateSeparator: .dash, dateTimeSeparator: .space, timeSeparator: .omitted, timeZoneSeparator: .omitted, includingFractionalSeconds: false, timeZone: .autoupdatingCurrent))
