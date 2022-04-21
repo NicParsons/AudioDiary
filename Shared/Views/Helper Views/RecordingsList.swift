@@ -3,6 +3,7 @@ import SwiftUI
 struct RecordingsList: View {
 	@EnvironmentObject var model: Model
 	var recordings: [Recording]
+	let date: Date
 	@State private var selected: Recording?
 	@State private var confirmationDialogIsShown = false
 
@@ -35,7 +36,7 @@ RecordingRow(recording: recording)
 		} // confirmation dialog
 		.overlay(Group {
 			if recordings.isEmpty {
-				Text("You haven't recorded a diary entry for this day yet. Hit the “Record” button to get started.")
+				Text("You haven't recorded a diary entry for \(date.stringWithRelativeFormatting()) yet. Hit the “Record” button to get started.")
 					.font(.largeTitle)
 			} // end if
 		}) // overlay group
@@ -49,11 +50,28 @@ RecordingRow(recording: recording)
 			}
 			model.delete(files)
 		}
+
+	/* if we ever want a simpler way to initialise this view, we could use the following code
+	init(recordings: [Recording]) {
+		self.recordings = recordings
+		self.date = nil
+	}
+
+	 // but if we use a custom initialiser we have to replace the default initialiser as well
+	init(recordings: [Recording], date: Date) {
+		self.recordings = recordings
+		self.date = date
+	}
+
+	 // and we'd also have to make the date constant an optional,
+	 // conditionally force unwrap it in the Text view, and
+	 // provide an alternative string to use if it is nil
+	 */
 } // view
 
 struct RecordingsList_Previews: PreviewProvider {
     static var previews: some View {
-		RecordingsList(recordings: [Recording]())
+		RecordingsList(recordings: [Recording](), date: Date())
 			.environmentObject(Model())
     }
 }
