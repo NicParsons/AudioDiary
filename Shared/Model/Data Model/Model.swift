@@ -9,6 +9,14 @@ class Model: NSObject, ObservableObject, AVAudioPlayerDelegate {
 	@Published var isPlaying = false
 	@Published var recordings: [Recording] = []
 
+	var currentlyPlayingURL: URL? {
+		if isPlaying {
+			return audioPlayer.url
+		} else {
+			return nil
+		} // end if
+	} // variable
+
 	var recordingsByDay: [CalendarDay] {
 		// this code might take too long to be in a computed property
 		var days = [CalendarDay]()

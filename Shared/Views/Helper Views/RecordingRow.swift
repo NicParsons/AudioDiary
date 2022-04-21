@@ -9,12 +9,7 @@ struct RecordingRow: View {
 		HStack {
 			Text(recording.shortDescription.capitalizingFirstLetter())
 			Spacer()
-			if !model.isPlaying {
-				PlayButton(recordingID: recording.id)
-			} else {
-				StopPlayingButton()
-			} // end if isPlaying
-
+			PlayPauseButton(recordingID: recording.id)
 			Button(action: {
 confirmationDialogIsShown = true
 			}) {
