@@ -4,10 +4,11 @@ struct RecordingRow: View {
 	let recording: Recording
 	@EnvironmentObject var model: Model
 	@State private var confirmationDialogIsShown = false
+	@State private var duration: Int = 0
 
     var body: some View {
 		HStack {
-			Text(recording.shortDescription.capitalizingFirstLetter())
+				Text(recording.shortDescription.capitalizingFirstLetter() + " (\(duration.formattedAsDuration()))")
 			Spacer()
 			PlayPauseButton(recordingID: recording.id)
 			Button(action: {
@@ -51,6 +52,11 @@ confirmationDialogIsShown = true
 		} // end action
 		.accessibilityAction(named: Text("Delete")) {
 			confirmationDialogIsShown = true
+		}
+		.onAppear {
+			Task {
+			await duration = recording.duration()
+			}
 		}
     } // body
 } // View

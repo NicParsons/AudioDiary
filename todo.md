@@ -11,14 +11,14 @@
 
 ##. Features
 
-* show duration in RecordingRow
 * sync data with CoreData and CloudKit
-* add other playback controls like pause, skip back, skip forward, speed, etc (might need now playing screen)
+* add other playback controls like skip back, skip forward, speed, etc (might need now playing screen)
 * ability to assign recording to a date other than creation date (i.e. allow assignment of calendarDate property)
 * maybe recording detail view
 * pretty calendar view to see all days for which there are recordings
 * understand the weird messages being written to the console
 * editing/trimming functions
+* allow importing of audio files
 
 ##Commit Message
 

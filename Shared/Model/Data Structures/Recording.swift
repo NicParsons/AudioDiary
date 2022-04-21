@@ -1,4 +1,5 @@
 import Foundation
+import AVFoundation
 
 struct Recording: Codable, Identifiable, Hashable {
 	var id = UUID()
@@ -33,11 +34,21 @@ return creationDate
 	var shortDescription: String {
 		return "entry at \(timeStamp)"
 	}
-}
 
-//
+	func duration() async -> Int {
+		print("Calculating duration.")
+		var seconds: Int
+		let audioAsset = AVAsset(url: fileURL)
+		do {
+			let CMTimeDuration = try await audioAsset.load(.duration)
+			seconds = Int(CMTimeDuration.seconds)
+		} catch {
+			seconds = 0
+		}
+		return seconds
+	} // func
+} // Recording struct
+
 //  Recording.swift
 //  AudioDiary
-//
 //  Created by Nicholas Parsons on 16/4/2022.
-//

@@ -117,6 +117,7 @@ audioRecorder = try AVAudioRecorder(url: filePath, settings: recordingSettings)
 		do {
 		let directoryContents = try fileManager.contentsOfDirectory(at: documentDirectory, includingPropertiesForKeys: nil)
 			for url in directoryContents {
+				print("Fetching \(url)")
 	let recording = Recording(fileURL: url)
 				recordings.append(recording)
 				recordings.sort(by: { $0.calendarDate.compare($1.calendarDate) == .orderedAscending})
@@ -214,7 +215,6 @@ print("Playback paused.")
 		super.init()
 		fetchAllRecordings()
 	}
-
 } // class
 
 //  Model.swift

@@ -7,7 +7,6 @@ struct AudioDiaryApp: App {
 
     var body: some Scene {
         WindowGroup {
-            // ContentView()
 			HomeScreen()
 				.environmentObject(model)
 				.environment(\.managedObjectContext, persistenceController.container.viewContext)
