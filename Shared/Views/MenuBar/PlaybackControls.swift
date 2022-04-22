@@ -6,8 +6,8 @@ struct PlaybackControlsMenu: Commands {
 
     var body: some Commands {
 		CommandMenu("Playback Controls") {
-			PlayButton(recordingID: selectedID).environmentObject(model)
-			StopPlayingButton().environmentObject(model)
+			PlayPauseButton(recordingID: selectedID)
+				.environmentObject(model)
 		} // CommandMenu
     } // body
 } // Commandds

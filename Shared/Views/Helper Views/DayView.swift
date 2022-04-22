@@ -11,7 +11,11 @@ struct DayView: View {
 
 			Spacer()
 
+			HStack {
 			RecordButton()
+				Spacer()
+				ImportButton()
+			} // HStack
 		} // VStack
 		} // Navigation View
 		.navigationTitle(Text(date.stringWithRelativeFormatting()))

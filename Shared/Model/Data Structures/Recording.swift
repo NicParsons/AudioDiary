@@ -36,7 +36,6 @@ return creationDate
 	}
 
 	func duration() async -> Int {
-		print("Calculating duration.")
 		var seconds: Int
 		let audioAsset = AVAsset(url: fileURL)
 		do {

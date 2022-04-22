@@ -1,6 +1,7 @@
 import Foundation
 import Combine
 import AVFoundation
+import SwiftUI
 
 class Model: NSObject, ObservableObject, AVAudioPlayerDelegate {
 	var audioRecorder: AVAudioRecorder!
@@ -8,6 +9,9 @@ class Model: NSObject, ObservableObject, AVAudioPlayerDelegate {
 	@Published var isRecording = false
 	@Published var isPlaying = false
 	@Published var recordings: [Recording] = []
+	@AppStorage("usesICloud") var usesICloud = true
+	@AppStorage("iCloudEnabled") var iCloudEnabled = false
+	var documentsDirectory: URL!
 
 	var currentlyPlayingURL: URL? {
 		if isPlaying {
@@ -94,16 +98,49 @@ audioRecorder = try AVAudioRecorder(url: filePath, settings: recordingSettings)
 	func newFileURL() -> URL {
 		let fileName = "Diary Entry"
 		let fileExtension = ".m4a"
-		let documentPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
 		let iso8601Date = Date().ISO8601Format(.init(dateSeparator: .dash, dateTimeSeparator: .space, timeSeparator: .omitted, timeZoneSeparator: .omitted, includingFractionalSeconds: false, timeZone: .autoupdatingCurrent))
 		let index = iso8601Date.firstIndex(of: "+") ?? iso8601Date.endIndex
 		let dateTimeStamp = iso8601Date[..<index]
 		let dateStamp = dateTimeStamp.components(separatedBy: .whitespaces)[0]
 		let timeStamp = dateTimeStamp.components(separatedBy: .whitespaces)[1]
+		let documentPath = recordingsDirectory()
 		let filePath = documentPath.appendingPathComponent("\(dateStamp) \(fileName) at \(timeStamp)\(fileExtension)")
 		print("The file URL is \(filePath).")
 		return filePath
 	}
+
+	func setDocumentsDirectory() {
+		let fileManager = FileManager.default
+		if iCloudEnabled && usesICloud {
+			print("The user is signed into iCloud and has chosen to use it.")
+			if let url = fileManager.url(forUbiquityContainerIdentifier: nil) {
+				documentsDirectory = url.appendingPathComponent("Documents", isDirectory: true)
+			} else {
+print("fileManager.url(forUbiquityContainerIdentifier:) returned nil.")
+				// should probably throw error or something
+				documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+			} // end if we could get the ubiquity container url
+		} else { // doesn't use iCloud
+			print("iCloud is not enabled or the user has chosen not to use it.")
+			documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+		} // end if
+	} // func
+
+	func recordingsDirectory() -> URL {
+		let subDirectory = documentsDirectory.appendingPathComponent("Diary Entries", isDirectory: true)
+		var isDirectory: ObjCBool = true
+		let fileManager = FileManager.default
+		if !fileManager.fileExists(atPath: subDirectory.path, isDirectory: &isDirectory) {
+			do {
+				try fileManager.createDirectory(at: subDirectory, withIntermediateDirectories: true)
+			} catch {
+				print("Unable to create Diary Entries directory.")
+print(error)
+				//TODO: Work out what to do if unable to create the subdirectory.
+			} // end do try catch
+		} // end if
+		return subDirectory
+	} // func
 
 	func fetchAllRecordings() {
 		print("Fetching recordings.")
@@ -112,10 +149,10 @@ audioRecorder = try AVAudioRecorder(url: filePath, settings: recordingSettings)
 		recordings.removeAll()
 
 		let fileManager = FileManager.default
-		let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+		let directory = recordingsDirectory()
 
 		do {
-		let directoryContents = try fileManager.contentsOfDirectory(at: documentDirectory, includingPropertiesForKeys: nil)
+		let directoryContents = try fileManager.contentsOfDirectory(at: directory, includingPropertiesForKeys: nil)
 			for url in directoryContents {
 				print("Fetching \(url)")
 	let recording = Recording(fileURL: url)
@@ -147,13 +184,27 @@ audioRecorder = try AVAudioRecorder(url: filePath, settings: recordingSettings)
 	func delete(_ url: URL) {
 		print("Deleting \(url).")
 		do {
-		   try FileManager.default.removeItem(at: url)
+		   try FileManager.default.trashItem(at: url, resultingItemURL: nil)
 			print("File deleted.")
 			if isPlaying && audioPlayer.url == url { self.stopPlaying() }
 		} catch {
 			print("Could not delete \(url). The error was: \(error.localizedDescription)")
 		} // do try catch
 	}
+
+	func importRecording(_ url: URL) throws {
+		let fileName = url.lastPathComponent
+		let destinationURL = recordingsDirectory().appendingPathComponent(fileName, isDirectory: false)
+		let fileManager = FileManager.default
+		do {
+			try fileManager.copyItem(at: url, to: destinationURL)
+		} catch {
+			print("Unable to copy the imported item (\(url) to \(destinationURL).")
+			print(error)
+			throw error
+		}
+		fetchAllRecordings()
+	} // func
 
 	func startPlaying(_ audio: URL) {
 		if isPlaying { stopPlaying() }
@@ -211,8 +262,19 @@ print("Playback paused.")
 			} // end if
 		} // func
 
+	func getICloudToken() -> (NSCoding & NSCopying & NSObjectProtocol)? {
+		return FileManager.default.ubiquityIdentityToken
+	}
+
+	func isUserLoggedIntoIcloud() -> Bool {
+return getICloudToken() != nil
+	}
+
 	override init() {
 		super.init()
+iCloudEnabled = isUserLoggedIntoIcloud()
+		print("The user is \(iCloudEnabled ? "" : "not") signed into icloud.")
+		setDocumentsDirectory()
 		fetchAllRecordings()
 	}
 } // class

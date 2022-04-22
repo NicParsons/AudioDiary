@@ -1,10 +1,3 @@
-//
-//  Persistence.swift
-//  Shared
-//
-//  Created by Nicholas Parsons on 16/4/2022.
-//
-
 import CoreData
 
 struct PersistenceController {
@@ -53,3 +46,7 @@ struct PersistenceController {
         })
     }
 }
+
+//  Persistence.swift
+//  Shared
+//  Created by Nicholas Parsons on 16/4/2022.

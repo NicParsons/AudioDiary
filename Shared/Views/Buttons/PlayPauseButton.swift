@@ -19,11 +19,13 @@ Label("Pause", systemImage: "pause.circle")
 				} else {
 			Label("Play", systemImage: "play.circle")
 				} // end if
+			} else {
+		Label("Play", systemImage: "play.circle")
 			} // end if let
 		} // button
 		.foregroundColor(model.isPlaying ? .red : .green)
 		.disabled(recordingID == nil)
-		.keyboardShortcut(" ", modifiers: [])
+		// .keyboardShortcut(" ", modifiers: [])
     } // body
 } // view
 

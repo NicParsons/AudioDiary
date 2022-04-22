@@ -7,11 +7,12 @@ struct AudioDiaryApp: App {
 
     var body: some Scene {
         WindowGroup {
-			HomeScreen()
+HomeScreen()
 				.environmentObject(model)
 				.environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
 		.commands {
+			FileMenu()
 			PlaybackControlsMenu()
 		}
     } // body

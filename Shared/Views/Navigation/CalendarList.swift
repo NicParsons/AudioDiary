@@ -38,8 +38,15 @@ RecordingRow(recording: recording)
 // do nothing
 			}
 		} message: { _ in
-			Text("This action cannot be undone.")
+			Text("Deleting the recording will remove it from icloud and from all your devices signed into icloud. This action cannot be undone.")
 		} // confirmation dialog
+		.overlay(Group {
+			if model.recordings.isEmpty {
+				Text("You do not yet have any diary entries. Switch to the “Today” tab and hit “Record” to record your first diary entry.")
+					.font(.largeTitle)
+					.multilineTextAlignment(.center)
+			}
+		}) // overlay group
     } // body
 } // View
 
