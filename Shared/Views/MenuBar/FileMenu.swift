@@ -12,8 +12,7 @@ struct FileMenu: Commands {
 	@StateObject var model = Model()
 	var body: some Commands {
 		CommandGroup(after: .newItem) {
-			RecordButton()
-				.keyboardShortcut("r", modifiers: [.command])
+			ImportButton()
 				.environmentObject(model)
 		}
 	} // body

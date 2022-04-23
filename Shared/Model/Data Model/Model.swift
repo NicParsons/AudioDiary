@@ -2,6 +2,7 @@ import Foundation
 import Combine
 import AVFoundation
 import SwiftUI
+import AudioToolbox
 
 class Model: NSObject, ObservableObject, AVAudioPlayerDelegate {
 	var audioRecorder: AVAudioRecorder!
@@ -77,6 +78,9 @@ print(error)
 
 		do {
 audioRecorder = try AVAudioRecorder(url: filePath, settings: recordingSettings)
+			// play system sound before recording starts so that sound not captured by recording
+			playSystemSound(named: "Funk", ofType: .aiff)
+			// sound effect still captured on recording
 			audioRecorder.record()
 			DispatchQueue.main.async {
 				self.isRecording = true
@@ -90,9 +94,99 @@ audioRecorder = try AVAudioRecorder(url: filePath, settings: recordingSettings)
 
 	func stopRecording() {
 		audioRecorder!.stop()
+		playSystemSound(named: "Bottle", ofType: .aiff)
 		isRecording = false
 		print("Recording stopped.")
 		fetchAllRecordings()
+	} // func
+
+	func startPlaying(_ audio: URL) {
+		if isPlaying { stopPlaying() }
+
+print("About to play \(audio).")
+
+		#if os(iOS)
+		let playbackSession = AVAudioSession.sharedInstance()
+		do {
+					try playbackSession.overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
+				} catch {
+					print("Couldn't play over the device's loud speaker.")
+				}
+		#endif
+
+		do {
+					audioPlayer = try AVAudioPlayer(contentsOf: audio)
+			audioPlayer.delegate = self
+					audioPlayer.play()
+			DispatchQueue.main.async {
+				self.isPlaying = true
+			} // main queue
+			print("Started playing \(audio).")
+				} catch {
+					print("Playback failed.")
+				}
+	} // func
+
+	func pause() {
+		print("Pausing playback.")
+		if isPlaying { audioPlayer.pause() }
+		DispatchQueue.main.async {
+			self.isPlaying = false
+		}
+print("Playback paused.")
+	}
+
+	func stopPlaying() {
+		print("Stopping playback.")
+		// UI logic should mean that the stop button can only be pressed if isPlaying
+		// but let's make doubly sure
+		// because if nothing has yet been played the audioPlayer will be nil
+		if isPlaying { audioPlayer.stop() }
+		DispatchQueue.main.async {
+			self.isPlaying = false
+		}
+		print("Playback stopped.")
+	} // func
+
+	func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+			if flag {
+				DispatchQueue.main.async {
+					self.isPlaying = false
+				} // main queue
+			} // end if
+		} // func
+
+	func playSystemSound(named soundName: String, ofType fileType: UTType) {
+		if let soundID = idForSystemSound(named: soundName, ofType: fileType) {
+AudioServicesPlaySystemSound(soundID)
+			print("Sound played.")
+		} else {
+			print("Could not get valid SystemSoundID to play.")
+		}
+	}
+
+	func idForSystemSound(named soundName: String, ofType fileType: UTType) -> SystemSoundID? {
+		var soundID: SystemSoundID = 0 // 1013 = recording_started, 1014 = recording_stopped
+		guard let url = urlForSystemSound(named: soundName, ofType: fileType) else {
+			return nil
+		}
+		let cfURL = url as CFURL
+AudioServicesCreateSystemSoundID(cfURL, &soundID)
+return soundID
+	} // func
+
+	func urlForSystemSound(named soundName: String, ofType fileType: UTType) -> URL? {
+		let fileManager = FileManager.default
+		do {
+		let library = try fileManager.url(for: .libraryDirectory, in: .systemDomainMask, appropriateFor: nil, create: false)
+			let soundsDirectory = library.appendingPathComponent("Sounds", isDirectory: true)
+			let soundURL = soundsDirectory.appendingPathComponent(soundName)
+			return soundURL.appendingPathExtension(for: fileType)
+		} catch {
+			print("Could not get url for System Library directory.")
+			print(error)
+return nil
+		}
 	} // func
 
 	func newFileURL() -> URL {
@@ -205,62 +299,6 @@ print(error)
 		}
 		fetchAllRecordings()
 	} // func
-
-	func startPlaying(_ audio: URL) {
-		if isPlaying { stopPlaying() }
-
-print("About to play \(audio).")
-
-		#if os(iOS)
-		let playbackSession = AVAudioSession.sharedInstance()
-		do {
-					try playbackSession.overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
-				} catch {
-					print("Couldn't play over the device's loud speaker.")
-				}
-		#endif
-
-		do {
-					audioPlayer = try AVAudioPlayer(contentsOf: audio)
-			audioPlayer.delegate = self
-					audioPlayer.play()
-			DispatchQueue.main.async {
-				self.isPlaying = true
-			} // main queue
-			print("Started playing \(audio).")
-				} catch {
-					print("Playback failed.")
-				}
-	} // func
-
-	func pause() {
-		print("Pausing playback.")
-		if isPlaying { audioPlayer.pause() }
-		DispatchQueue.main.async {
-			self.isPlaying = false
-		}
-print("Playback paused.")
-	}
-
-	func stopPlaying() {
-		print("Stopping playback.")
-		// UI logic should mean that the stop button can only be pressed if isPlaying
-		// but let's make doubly sure
-		// because if nothing has yet been played the audioPlayer will be nil
-		if isPlaying { audioPlayer.stop() }
-		DispatchQueue.main.async {
-			self.isPlaying = false
-		}
-		print("Playback stopped.")
-	} // func
-
-	func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-			if flag {
-				DispatchQueue.main.async {
-					self.isPlaying = false
-				} // main queue
-			} // end if
-		} // func
 
 	func getICloudToken() -> (NSCoding & NSCopying & NSObjectProtocol)? {
 		return FileManager.default.ubiquityIdentityToken

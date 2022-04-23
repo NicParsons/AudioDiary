@@ -5,9 +5,15 @@ struct PlaybackControlsMenu: Commands {
 	@FocusedBinding(\.selection) private var selectedID: UUID?
 
     var body: some Commands {
-		CommandMenu("Playback Controls") {
+		CommandMenu("Controls") {
 			PlayPauseButton(recordingID: selectedID)
 				.environmentObject(model)
+			RecordOnlyButton()
+				.environmentObject(model)
+				.keyboardShortcut("r", modifiers: [.command])
+			StopRecordingButton()
+				.environmentObject(model)
+				.keyboardShortcut(".", modifiers: [.command])
 		} // CommandMenu
     } // body
 } // Commandds

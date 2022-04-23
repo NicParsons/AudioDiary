@@ -5,18 +5,18 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
+		sortDescriptors: [NSSortDescriptor(keyPath: \DiaryEntry.date, ascending: true)],
         animation: .default)
-    private var items: FetchedResults<Item>
+    private var diaryEntries: FetchedResults<DiaryEntry>
 
     var body: some View {
         NavigationView {
             List {
-                ForEach(items) { item in
+                ForEach(diaryEntries) { entry in
                     NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+                        Text("Diary entry for \(entry.date!, formatter: itemFormatter)")
                     } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
+						Text(entry.date!, formatter: itemFormatter)
                     }
                 }
                 .onDelete(perform: deleteItems)
@@ -28,19 +28,20 @@ struct ContentView: View {
                 }
 #endif
                 ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
+                    Button(action: addEntry) {
+                        Label("Add", systemImage: "plus")
                     }
                 }
             }
-            Text("Select an item")
+            Text("Select a diary entry.")
         }
     }
 
-    private func addItem() {
+    private func addEntry() {
         withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
+            let newEntry = DiaryEntry(context: viewContext)
+			newEntry.id = UUID()
+			newEntry.date = Date()
 
             do {
                 try viewContext.save()
@@ -55,7 +56,7 @@ struct ContentView: View {
 
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
+            offsets.map { diaryEntries[$0] }.forEach(viewContext.delete)
 
             do {
                 try viewContext.save()
@@ -82,10 +83,6 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-//
 //  ContentView.swift
 //  Shared
-//
 //  Created by Nicholas Parsons on 16/4/2022.
-//
-
