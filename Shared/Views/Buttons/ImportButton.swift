@@ -10,6 +10,8 @@ struct ImportButton: View {
         Button(
 			action: { showImporter = true }) {
 				Label("Import Audio Files", systemImage: "square.and.arrow.down")
+					.frame(width: 100, height: 50, alignment: .center)
+					.cornerRadius(8)
 			} // Button
 			.keyboardShortcut("o", modifiers: [.command])
 			.fileImporter(isPresented: $showImporter,

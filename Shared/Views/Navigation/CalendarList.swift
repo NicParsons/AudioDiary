@@ -6,6 +6,7 @@ struct CalendarList: View {
 	@State private var confirmationDialogIsShown = false
 
     var body: some View {
+		NavigationView {
 		List(selection: $selection) {
 			ForEach(model.recordingsByDay) { day in
 				Section(header: Text(day.date.formatted(date: .complete, time: .omitted))) {
@@ -15,7 +16,6 @@ RecordingRow(recording: recording)
 			} // Section
 			} // ForEach
 		} // List
-		.navigationTitle(Text("Your Audio Journal"))
 		#if os(macOS)
 		.onDeleteCommand(perform: {
 			if selection != nil { confirmationDialogIsShown = true }
@@ -47,6 +47,15 @@ RecordingRow(recording: recording)
 					.multilineTextAlignment(.center)
 			}
 		}) // overlay group
+		} // NavigationView
+		.navigationTitle(Text("Your Audio Journal"))
+		.toolbar {
+			#if os(iOS)
+			ToolbarItem(placement: .navigationBarTrailing) {
+			EditButton()
+		} // ToolbarItem
+		#endif
+		} // Toolbar
     } // body
 } // View
 

@@ -67,11 +67,9 @@ return
 		#if os(iOS)
 		let recordingSession = AVAudioSession.sharedInstance()
 		do {
-			try recordingSession.setCategory(.playAndRecord)
-			try recordingSession.setMode(.default)
 			try recordingSession.setActive(true)
 		} catch {
-			print("Unable to set up recording session on iOS.")
+			print("Unable to activate recording session on iOS.")
 print(error)
 		} // do try catch
 		#endif
@@ -79,7 +77,8 @@ print(error)
 		do {
 audioRecorder = try AVAudioRecorder(url: filePath, settings: recordingSettings)
 			// play system sound before recording starts so that sound not captured by recording
-			playSystemSound(named: "Funk", ofType: .aiff)
+			AudioServicesPlaySystemSound(1113) // begin_record.caf
+			// alternative for mac was: playSystemSound(named: "Funk", ofType: .aiff)
 			// sound effect still captured on recording
 			audioRecorder.record()
 			DispatchQueue.main.async {
@@ -94,7 +93,8 @@ audioRecorder = try AVAudioRecorder(url: filePath, settings: recordingSettings)
 
 	func stopRecording() {
 		audioRecorder!.stop()
-		playSystemSound(named: "Bottle", ofType: .aiff)
+		AudioServicesPlaySystemSound(1114) // end_record.caf
+		// alternative for macOS: playSystemSound(named: "Bottle", ofType: .aiff)
 		isRecording = false
 		print("Recording stopped.")
 		fetchAllRecordings()
@@ -104,15 +104,6 @@ audioRecorder = try AVAudioRecorder(url: filePath, settings: recordingSettings)
 		if isPlaying { stopPlaying() }
 
 print("About to play \(audio).")
-
-		#if os(iOS)
-		let playbackSession = AVAudioSession.sharedInstance()
-		do {
-					try playbackSession.overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
-				} catch {
-					print("Couldn't play over the device's loud speaker.")
-				}
-		#endif
 
 		do {
 					audioPlayer = try AVAudioPlayer(contentsOf: audio)
@@ -291,7 +282,9 @@ print(error)
 		let destinationURL = recordingsDirectory().appendingPathComponent(fileName, isDirectory: false)
 		let fileManager = FileManager.default
 		do {
+			let didAccess = url.startAccessingSecurityScopedResource()
 			try fileManager.copyItem(at: url, to: destinationURL)
+			if didAccess { url.stopAccessingSecurityScopedResource() }
 		} catch {
 			print("Unable to copy the imported item (\(url) to \(destinationURL).")
 			print(error)
@@ -308,12 +301,30 @@ print(error)
 return getICloudToken() != nil
 	}
 
+	func configureAudioSession() {
+#if os(iOS)
+let session = AVAudioSession.sharedInstance()
+do {
+	try session.setCategory(.playAndRecord, options: [.defaultToSpeaker, .allowBluetooth, .allowAirPlay, .allowBluetoothA2DP])
+	try session.setMode(.default)
+print("Audio session configured.")
+} catch {
+	print("Unable to set up audio session on iOS.")
+print(error)
+	fatalError("Unable to configure audio session on iOS.")
+} // do try catch
+#endif
+	} // func
+
 	override init() {
 		super.init()
 iCloudEnabled = isUserLoggedIntoIcloud()
 		print("The user is \(iCloudEnabled ? "" : "not") signed into icloud.")
 		setDocumentsDirectory()
 		fetchAllRecordings()
+		#if os(iOS)
+		configureAudioSession()
+		#endif
 	}
 } // class
 

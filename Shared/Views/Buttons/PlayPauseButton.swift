@@ -16,14 +16,22 @@ struct PlayPauseButton: View {
 			if let id = recordingID, let recording = model[id] {
 				if model.isPlaying && model.currentlyPlayingURL == recording.fileURL {
 Label("Pause", systemImage: "pause.circle")
+						.background(Color.red)
+						.foregroundColor(.white)
+						.cornerRadius(8)
 				} else {
 			Label("Play", systemImage: "play.circle")
+						.background(Color.green)
+						.foregroundColor(.white)
+						.cornerRadius(8)
 				} // end if
 			} else {
 		Label("Play", systemImage: "play.circle")
+					.background(Color.green)
+					.foregroundColor(.white)
+					.cornerRadius(8)
 			} // end if let
 		} // button
-		.foregroundColor(model.isPlaying ? .red : .green)
 		.disabled(recordingID == nil)
 		// .keyboardShortcut(" ", modifiers: [])
     } // body

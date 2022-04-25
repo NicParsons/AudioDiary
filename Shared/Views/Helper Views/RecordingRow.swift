@@ -8,9 +8,19 @@ struct RecordingRow: View {
 
     var body: some View {
 		HStack {
+			HStack {
+				if nowPlaying() {
+					Image(systemName: "waveform.circle.fill")
+				} else {
+	Image(systemName: "waveform.circle")
+				}
 				Text(recording.shortDescription.capitalizingFirstLetter() + " (\(duration.formattedAsDuration()))")
+			}
+			.accessibilityElement(children: .combine)
+			.accessibilityLabel(Text(recording.shortDescription.capitalizingFirstLetter() + " (\(duration.formattedAsDuration()))" + (nowPlaying() ? "(now playing)" : "")))
 			Spacer()
 			PlayPauseButton(recordingID: recording.id)
+			DownloadButton(recording: recording)
 			Button(action: {
 confirmationDialogIsShown = true
 			}) {
@@ -33,7 +43,7 @@ confirmationDialogIsShown = true
 // do nothing
 			}
 		} message: { _ in
-			Text("This action cannot be undone.")
+			Text("Deleting the recording will remove it from iCloud and from all your devices signed into iCloud. This action cannot be undone.")
 		} // confirmation dialog
 
 		// macOS automatically combines the RecordingRow into one accessibility element which VoiceOver can interact with to access the child elements
@@ -59,6 +69,10 @@ confirmationDialogIsShown = true
 			}
 		}
     } // body
+
+	func nowPlaying() -> Bool {
+		return model.isPlaying && model.audioPlayer.url == recording.fileURL
+	}
 } // View
 
 struct RecordingRow_Previews: PreviewProvider {
@@ -68,10 +82,6 @@ struct RecordingRow_Previews: PreviewProvider {
     }
 }
 
-//
 //  RecordingRow.swift
 //  AudioDiary
-//
 //  Created by Nicholas Parsons on 17/4/2022.
-//
-

@@ -72,6 +72,8 @@
 		04D378ED280AF11B008077EE /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D378EB280AF11B008077EE /* DayView.swift */; };
 		04D378EF280AF460008077EE /* RecordingsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D378EE280AF460008077EE /* RecordingsList.swift */; };
 		04D378F0280AF460008077EE /* RecordingsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D378EE280AF460008077EE /* RecordingsList.swift */; };
+		04F024AF2816338F007D448D /* DownloadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F024AE2816338F007D448D /* DownloadButton.swift */; };
+		04F024B02816338F007D448D /* DownloadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F024AE2816338F007D448D /* DownloadButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -116,6 +118,7 @@
 		04D378EB280AF11B008077EE /* DayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
 		04D378EE280AF460008077EE /* RecordingsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingsList.swift; sourceTree = "<group>"; };
 		04D378F1280B1194008077EE /* AudioDiary--macOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AudioDiary--macOS--Info.plist"; sourceTree = "<group>"; };
+		04F024AE2816338F007D448D /* DownloadButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,6 +242,7 @@
 				0426C4762812E21D00B3E17A /* RecordOnlyButton.swift */,
 				0426C4792812E2C400B3E17A /* StopRecordingButton.swift */,
 				0426C4712812988800B3E17A /* ImportButton.swift */,
+				04F024AE2816338F007D448D /* DownloadButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -358,7 +362,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1310;
-				LastUpgradeCheck = 1310;
+				LastUpgradeCheck = 1330;
 				TargetAttributes = {
 					04D378C9280AE984008077EE = {
 						CreatedOnToolsVersion = 13.1;
@@ -413,6 +417,7 @@
 			files = (
 				0482C635280D72DC00FB2B8B /* Model.swift in Sources */,
 				04D378EC280AF11B008077EE /* DayView.swift in Sources */,
+				04F024AF2816338F007D448D /* DownloadButton.swift in Sources */,
 				0482C605280BC3CF00FB2B8B /* RecordingExtension.swift in Sources */,
 				0413396C2811436A0093A4C1 /* IntExtension.swift in Sources */,
 				0413396F281169600093A4C1 /* RecordButton.swift in Sources */,
@@ -451,6 +456,7 @@
 				0482C631280D367E00FB2B8B /* FocusValues.swift in Sources */,
 				04D378ED280AF11B008077EE /* DayView.swift in Sources */,
 				0482C62B280D227500FB2B8B /* PlayButton.swift in Sources */,
+				04F024B02816338F007D448D /* DownloadButton.swift in Sources */,
 				0482C606280BC3CF00FB2B8B /* RecordingExtension.swift in Sources */,
 				0482C615280CDFAF00FB2B8B /* CalendarDay.swift in Sources */,
 				0482C61C280CEE5300FB2B8B /* HomeScreen.swift in Sources */,
@@ -607,7 +613,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "AudioDiary (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 462YLDWX6X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -639,7 +645,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "AudioDiary (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 462YLDWX6X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -671,9 +677,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 462YLDWX6X;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -702,9 +709,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 462YLDWX6X;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
