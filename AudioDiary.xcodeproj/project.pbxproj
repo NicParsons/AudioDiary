@@ -74,6 +74,7 @@
 		04D378F0280AF460008077EE /* RecordingsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D378EE280AF460008077EE /* RecordingsList.swift */; };
 		04F024AF2816338F007D448D /* DownloadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F024AE2816338F007D448D /* DownloadButton.swift */; };
 		04F024B02816338F007D448D /* DownloadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F024AE2816338F007D448D /* DownloadButton.swift */; };
+		04F024B22816899A007D448D /* AudioDiary--iOS--Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04F024B12816860F007D448D /* AudioDiary--iOS--Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -119,6 +120,7 @@
 		04D378EE280AF460008077EE /* RecordingsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingsList.swift; sourceTree = "<group>"; };
 		04D378F1280B1194008077EE /* AudioDiary--macOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AudioDiary--macOS--Info.plist"; sourceTree = "<group>"; };
 		04F024AE2816338F007D448D /* DownloadButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadButton.swift; sourceTree = "<group>"; };
+		04F024B12816860F007D448D /* AudioDiary--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "AudioDiary--iOS--Info.plist"; path = "iOS/AudioDiary--iOS--Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				04133955280E25FD0093A4C1 /* HomeScreen.swift */,
+				04F024B12816860F007D448D /* AudioDiary--iOS--Info.plist */,
 				0439B836281245D900415C75 /* AudioDiary (iOS).entitlements */,
 			);
 			path = iOS;
@@ -309,10 +312,10 @@
 		04D378D1280AE984008077EE /* macOS */ = {
 			isa = PBXGroup;
 			children = (
-				04D378D2280AE984008077EE /* macOS.entitlements */,
-				04D378F1280B1194008077EE /* AudioDiary--macOS--Info.plist */,
 				0482C61B280CEE5300FB2B8B /* HomeScreen.swift */,
 				0482C61D280CEE9B00FB2B8B /* Sidebar.swift */,
+				04D378D2280AE984008077EE /* macOS.entitlements */,
+				04D378F1280B1194008077EE /* AudioDiary--macOS--Info.plist */,
 			);
 			path = macOS;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04D378DB280AE984008077EE /* Assets.xcassets in Resources */,
+				04F024B22816899A007D448D /* AudioDiary--iOS--Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -617,6 +621,8 @@
 				DEVELOPMENT_TEAM = 462YLDWX6X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "AudioDiary--iOS--Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Audio Diary";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "AudioDiary needs access to the microphone to record your diary entries.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -649,6 +655,8 @@
 				DEVELOPMENT_TEAM = 462YLDWX6X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "AudioDiary--iOS--Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Audio Diary";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "AudioDiary needs access to the microphone to record your diary entries.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

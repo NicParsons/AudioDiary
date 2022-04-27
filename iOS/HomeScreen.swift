@@ -1,12 +1,13 @@
 import SwiftUI
 
 struct HomeScreen: View {
-	private enum tabs: Hashable {
+	@SceneStorage("selectedTab") private var selectedTab: tabs = tabs.today
+	private enum tabs: String, Hashable {
 		case today, list
 	}
 
     var body: some View {
-		TabView {
+		TabView(selection: $selectedTab) {
 TodayView()
 				.tabItem {
 					TodayViewLabel()
