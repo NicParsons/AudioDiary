@@ -14,9 +14,9 @@
 ##Features
 
 * sync data with CoreData and CloudKit
+* share recordings/diary entries
 * ability to assign recording to a date other than creation date (i.e. allow assignment of calendarDate property) – perhaps this can be done by dragging diary entry to a different date in the journal view
 * allow import of audio files by drag and drop and by copy paste
-* play should resume from point at which recording paused
 * CalendarList view should default to scrolled all the way to the bottom
 * add other playback controls like skip back, skip forward, speed, etc (might need now playing screen)
 * playback progress and recording progress

@@ -8,6 +8,8 @@ struct PlayPauseButton: View {
 			if let id = recordingID, let recording = model[id] {
 				if model.isPlaying && model.currentlyPlayingURL == recording.fileURL {
 					model.pause()
+				} else if model.currentlyPlayingURL == recording.fileURL {
+					model.resumePlayback()
 				} else {
 				model.startPlaying(recording.fileURL)
 				} // end if

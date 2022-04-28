@@ -15,8 +15,8 @@ class Model: NSObject, ObservableObject, AVAudioPlayerDelegate {
 	var documentsDirectory: URL!
 
 	var currentlyPlayingURL: URL? {
-		if isPlaying {
-			return audioPlayer.url
+		if let player = audioPlayer {
+			return player.url
 		} else {
 			return nil
 		} // end if
@@ -129,6 +129,16 @@ print("About to play \(audio).")
 		}
 print("Playback paused.")
 	}
+
+	func resumePlayback() {
+		if audioPlayer == nil { return }
+print("About to resume playback.")
+					audioPlayer.play()
+			DispatchQueue.main.async {
+				self.isPlaying = true
+			} // main queue
+			print("Resumed playback.")
+	} // func
 
 	func stopPlaying() {
 		print("Stopping playback.")
