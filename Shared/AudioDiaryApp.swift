@@ -3,13 +3,13 @@ import SwiftUI
 @main
 struct AudioDiaryApp: App {
 	@StateObject var model = Model()
-    let persistenceController = PersistenceController.shared
+    // let persistenceController = PersistenceController.shared
 
     var body: some Scene {
         WindowGroup {
 HomeScreen()
 				.environmentObject(model)
-				.environment(\.managedObjectContext, persistenceController.container.viewContext)
+				// .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
 		.commands {
 			FileMenu()

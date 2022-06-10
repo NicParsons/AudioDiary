@@ -167,11 +167,11 @@
 		0482C608280BC77700FB2B8B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				0482C63D280E1EFA00FB2B8B /* Labels */,
 				0482C619280CE8AD00FB2B8B /* Navigation */,
 				0482C61A280CE8C800FB2B8B /* Helper Views */,
 				0482C633280D394800FB2B8B /* MenuBar */,
 				0482C632280D391D00FB2B8B /* Buttons */,
+				0482C63D280E1EFA00FB2B8B /* Labels */,
 				0482C62F280D367E00FB2B8B /* FocusValues.swift */,
 			);
 			path = Views;
