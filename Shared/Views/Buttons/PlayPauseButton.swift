@@ -6,22 +6,14 @@ struct PlayPauseButton: View {
 
     var body: some View {
 		Button(action: {
-			print("PlayPauseButton pressed. The value of recordingURL is \(String(describing: recordingURL)).")
 			if let recordingURL = recordingURL {
-				print("A recording is selected.")
 				if model.isPlaying && model.currentlyPlayingURL == recordingURL {
-					print("About to pause.")
 					model.pause()
 				} else if model.currentlyPlayingURL == recordingURL {
-					print("About to resume.")
 					model.resumePlayback()
 				} else {
-					print("About to play.")
 				model.startPlaying(recordingURL)
 				} // end if
-				// for debugging only
-			} else {
-				print("Apparently the following recordingURL is nil: \(String(describing: recordingURL)).")
 			} // if let
 		}) {
 			if let recordingURL = recordingURL {
