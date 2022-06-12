@@ -3,8 +3,6 @@
 ##Bugs
 
 * double tapping entries, or pressing VO-space on macOS, triggers delete and/or play (both on iOS, just delete on macOS)
-* Play and Stop menu commands are always disabled
-* Play and Stop menu commands don't work even if not disabled
 * start recording sound effect captured on recording if not using headphones
 * toolbar not visible on iOS
 * downloading from iCloud is flaky – downloads seem to trigger but are not reflected in realtime, and downloads seem to complete between launches
@@ -13,6 +11,7 @@
 
 ##Features
 
+* assign keyboard shortcut to play/pause button in menu bar
 * sync data with CoreData and CloudKit
 * share recordings/diary entries
 * ability to assign recording to a date other than creation date (i.e. allow assignment of calendarDate property) – perhaps this can be done by dragging diary entry to a different date in the journal view
@@ -36,3 +35,6 @@
 
 ##Commit Message
 
+* assign keyboard shortcut of return to play/pause menu command
+* assigning space as the keyboard shortcut didn't work regardless of whether we used " " or the key equivalent .space
+* refactor delete button from RecordingRow into its own view

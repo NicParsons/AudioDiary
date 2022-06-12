@@ -21,11 +21,7 @@ struct RecordingRow: View {
 			Spacer()
 			PlayPauseButton(recordingURL: recording.fileURL)
 			DownloadButton(recording: recording)
-			Button(action: {
-confirmationDialogIsShown = true
-			}) {
-				Label("Delete", systemImage: "trash.circle")
-			}
+			DeleteButton(shouldDelete: $confirmationDialogIsShown)
 		} // HStack
 		.padding()
 		.frame(maxWidth: .infinity)
