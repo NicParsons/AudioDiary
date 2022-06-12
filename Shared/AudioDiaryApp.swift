@@ -13,7 +13,7 @@ HomeScreen()
         }
 		.commands {
 			FileMenu()
-			PlaybackControlsMenu()
+			PlaybackControlsMenu(model: model)
 		}
     } // body
 } // App

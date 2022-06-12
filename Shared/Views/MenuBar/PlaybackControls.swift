@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct PlaybackControlsMenu: Commands {
-	@StateObject var model = Model()
+	let model: Model
 	@FocusedValue(\.recording) private var selectedRecording: Recording??
 
     var body: some Commands {
