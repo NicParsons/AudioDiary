@@ -50,7 +50,7 @@ class Model: NSObject, ObservableObject, AVAudioPlayerDelegate {
 
 	var recordingSettings = [
 		AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
-		   AVSampleRateKey: 44000, // Apple VoiceMemos is only 24000
+		   AVSampleRateKey: 24000, // Apple VoiceMemos is only 24000
 		   AVNumberOfChannelsKey: 1,
 		   AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
 	   ]
@@ -63,16 +63,6 @@ return
 
 		print("Preparing to start recording.")
 		let filePath = newFileURL()
-
-		#if os(iOS)
-		let recordingSession = AVAudioSession.sharedInstance()
-		do {
-			try recordingSession.setActive(true)
-		} catch {
-			print("Unable to activate recording session on iOS.")
-print(error)
-		} // do try catch
-		#endif
 
 		do {
 audioRecorder = try AVAudioRecorder(url: filePath, settings: recordingSettings)
@@ -170,7 +160,32 @@ print("System interupted playback.")
 	}
 	 */
 
+	// playing and recording audio requires additional configuration on iOS
 	#if os(iOS)
+	func configureAudioSession() {
+let session = AVAudioSession.sharedInstance()
+do {
+	try session.setCategory(.playAndRecord, options: [.defaultToSpeaker, .allowBluetooth, .allowAirPlay, .allowBluetoothA2DP])
+	try session.setMode(.default)
+print("Audio session configured.")
+} catch {
+	print("Unable to set up audio session on iOS.")
+print(error)
+	fatalError("Unable to configure audio session on iOS.")
+} // do try catch
+	} // func
+
+	func configureRecordingSession() {
+let recordingSession = AVAudioSession.sharedInstance()
+do {
+	try recordingSession.setActive(true)
+	print("Recording session configured.")
+} catch {
+	print("Unable to activate recording session on iOS.")
+print(error)
+} // do try catch
+	}
+
 	func setupNotifications() {
 		// Get the default notification center instance.
 		let nc = NotificationCenter.default
@@ -364,21 +379,6 @@ print(error)
 return getICloudToken() != nil
 	}
 
-	func configureAudioSession() {
-#if os(iOS)
-let session = AVAudioSession.sharedInstance()
-do {
-	try session.setCategory(.playAndRecord, options: [.defaultToSpeaker, .allowBluetooth, .allowAirPlay, .allowBluetoothA2DP])
-	try session.setMode(.default)
-print("Audio session configured.")
-} catch {
-	print("Unable to set up audio session on iOS.")
-print(error)
-	fatalError("Unable to configure audio session on iOS.")
-} // do try catch
-#endif
-	} // func
-
 	override init() {
 		super.init()
 iCloudEnabled = isUserLoggedIntoIcloud()
@@ -387,6 +387,7 @@ iCloudEnabled = isUserLoggedIntoIcloud()
 		fetchAllRecordings()
 		#if os(iOS)
 		configureAudioSession()
+		configureRecordingSession()
 		#endif
 	}
 } // class

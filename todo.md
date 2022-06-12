@@ -2,7 +2,6 @@
 
 ##Bugs
 
-* playback status is not synced between the main view and the menu bar so that pressing play on a recording in the main view will not stop playback of a recording that was played from the menu bar command
 * double tapping entries, or pressing VO-space on macOS, triggers delete and/or play (both on iOS, just delete on macOS)
 * start recording sound effect captured on recording if not using headphones
 * toolbar not visible on iOS
@@ -12,7 +11,7 @@
 
 ##Features
 
-* pass selection from the Today view to menu bar commands
+* improve quality of audio recording
 * sync data with CoreData and CloudKit
 * share recordings/diary entries
 * ability to assign recording to a date other than creation date (i.e. allow assignment of calendarDate property) – perhaps this can be done by dragging diary entry to a different date in the journal view

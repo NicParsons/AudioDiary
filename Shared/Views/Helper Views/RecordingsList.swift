@@ -12,6 +12,7 @@ struct RecordingsList: View {
 RecordingRow(recording: recording)
 			// tried putting the accessibilityAction here but it didn't have the desired effect
 			} // List
+		.focusedSceneValue(\.recording, selected)
 		.frame(minWidth: 200, maxWidth: 400)
 		#if os(macOS)
 		.onDeleteCommand(perform: {
