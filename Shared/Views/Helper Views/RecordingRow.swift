@@ -19,7 +19,7 @@ struct RecordingRow: View {
 			.accessibilityElement(children: .combine)
 			.accessibilityLabel(Text(recording.shortDescription.capitalizingFirstLetter() + " (\(duration.formattedAsDuration()))" + (nowPlaying() ? "(now playing)" : "")))
 			Spacer()
-			PlayPauseButton(recordingID: recording.id)
+			PlayPauseButton(recordingURL: recording.fileURL)
 			DownloadButton(recording: recording)
 			Button(action: {
 confirmationDialogIsShown = true

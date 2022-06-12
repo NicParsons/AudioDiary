@@ -1,22 +1,22 @@
 import SwiftUI
 
 extension FocusedValues {
-	var recording: Binding<Recording>? {
+	var recording: Recording?? {
 		get { self[FocusedRecordingKey.self] }
 		set { self[FocusedRecordingKey.self] = newValue }
 	}
 
-	var selection: Binding<Recording.ID>? {
+	var selection: Recording.ID?? {
 		get { self[FocusedRecordingSelectionKey.self] }
 		set { self[FocusedRecordingSelectionKey.self] = newValue }
 	}
 
 	private struct FocusedRecordingKey: FocusedValueKey {
-		typealias Value = Binding<Recording>
+		typealias Value = Recording?
 	}
 
 	private struct FocusedRecordingSelectionKey: FocusedValueKey {
-		typealias Value = Binding<Recording.ID>
+		typealias Value = Recording.ID?
 	}
 }
 

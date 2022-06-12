@@ -2,12 +2,18 @@ import SwiftUI
 
 struct PlaybackControlsMenu: Commands {
 	@StateObject var model = Model()
-	@FocusedBinding(\.selection) private var selectedID: UUID?
+	// @FocusedValue(\.selection) private var selectedID: UUID??
+	@FocusedValue(\.recording) private var selectedRecording: Recording??
 
     var body: some Commands {
 		CommandMenu("Controls") {
-			PlayPauseButton(recordingID: selectedID)
+			// if let selectedID = selectedID {
+			if let unwrappedRecording = selectedRecording, let recording = unwrappedRecording {
+				PlayPauseButton(recordingURL: recording.fileURL)
 				.environmentObject(model)
+			} else {
+				PlayPauseButton(recordingURL: nil)
+			}
 			RecordOnlyButton()
 				.environmentObject(model)
 				.keyboardShortcut("r", modifiers: [.command])

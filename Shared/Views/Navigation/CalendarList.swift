@@ -16,6 +16,8 @@ RecordingRow(recording: recording)
 			} // Section
 			} // ForEach
 		} // List
+		// .focusedSceneValue(\.selection, selection)
+		.focusedSceneValue(\.recording, selectedRecording)
 		#if os(macOS)
 		.onDeleteCommand(perform: {
 			if selection != nil { confirmationDialogIsShown = true }
@@ -42,7 +44,7 @@ RecordingRow(recording: recording)
 		} // confirmation dialog
 		.overlay(Group {
 			if model.recordings.isEmpty {
-				Text("You do not yet have any diary entries. Switch to the “Today” tab and hit “Record” to record your first diary entry.")
+				Text("Diary entries that you record or import in the “Today” view will show up here.")
 					.font(.largeTitle)
 					.multilineTextAlignment(.center)
 			}
@@ -58,6 +60,16 @@ RecordingRow(recording: recording)
 		} // Toolbar
     } // body
 } // View
+
+extension CalendarList {
+	var selectedRecording: Recording? {
+		if let selectedID = selection, let selectedRecording = model[selectedID] {
+			return selectedRecording
+		} else {
+return nil
+		}
+	}
+}
 
 struct CalendarList_Previews: PreviewProvider {
     static var previews: some View {

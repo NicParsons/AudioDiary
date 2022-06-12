@@ -2,21 +2,30 @@ import SwiftUI
 
 struct PlayPauseButton: View {
 	@EnvironmentObject var model: Model
-	let recordingID: UUID?
+	let recordingURL: URL?
+
     var body: some View {
 		Button(action: {
-			if let id = recordingID, let recording = model[id] {
-				if model.isPlaying && model.currentlyPlayingURL == recording.fileURL {
+			print("PlayPauseButton pressed. The value of recordingURL is \(String(describing: recordingURL)).")
+			if let recordingURL = recordingURL {
+				print("A recording is selected.")
+				if model.isPlaying && model.currentlyPlayingURL == recordingURL {
+					print("About to pause.")
 					model.pause()
-				} else if model.currentlyPlayingURL == recording.fileURL {
+				} else if model.currentlyPlayingURL == recordingURL {
+					print("About to resume.")
 					model.resumePlayback()
 				} else {
-				model.startPlaying(recording.fileURL)
+					print("About to play.")
+				model.startPlaying(recordingURL)
 				} // end if
+				// for debugging only
+			} else {
+				print("Apparently the following recordingURL is nil: \(String(describing: recordingURL)).")
 			} // if let
 		}) {
-			if let id = recordingID, let recording = model[id] {
-				if model.isPlaying && model.currentlyPlayingURL == recording.fileURL {
+			if let recordingURL = recordingURL {
+				if model.isPlaying && model.currentlyPlayingURL == recordingURL {
 Label("Pause", systemImage: "pause.circle")
 						.background(Color.red)
 						.foregroundColor(.white)
@@ -34,14 +43,14 @@ Label("Pause", systemImage: "pause.circle")
 					.cornerRadius(8)
 			} // end if let
 		} // button
-		.disabled(recordingID == nil)
+		.disabled(recordingURL == nil)
 		// .keyboardShortcut(" ", modifiers: [])
     } // body
 } // view
 
 struct PlayPauseButton_Previews: PreviewProvider {
     static var previews: some View {
-        PlayPauseButton(recordingID: UUID())
+		PlayPauseButton(recordingURL: Model().dummyURL())
     }
 }
 
