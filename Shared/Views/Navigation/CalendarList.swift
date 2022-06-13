@@ -16,13 +16,13 @@ RecordingRow(recording: recording)
 			} // Section
 			} // ForEach
 		} // List
-		// .focusedSceneValue(\.selection, selection)
 		.focusedSceneValue(\.recording, selectedRecording)
-		#if os(macOS)
-		.onDeleteCommand(perform: {
-			if selection != nil { confirmationDialogIsShown = true }
-		} )
-		#endif
+#if os(macOS)
+.onDeleteCommand(perform: {
+	print("Delete key pressed.")
+	if selection != nil { confirmationDialogIsShown = true }
+} )
+#endif
 		// force unwrapping should be safe here as it's conditional on selection
 		.confirmationDialog("Delete \(selection == nil ? "nothing" : model[selection!] == nil ? "nothing" : model[selection!]!.description)?",
 							isPresented: $confirmationDialogIsShown,

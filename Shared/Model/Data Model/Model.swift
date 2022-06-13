@@ -313,24 +313,25 @@ print(error)
 
 	func fetchAllRecordings() {
 		print("Fetching recordings.")
-
-		// empty the array so we don't end up with duplicates
-		recordings.removeAll()
-
 		let fileManager = FileManager.default
 		let directory = recordingsDirectory()
+		var needToSave = false
 
 		do {
 		let directoryContents = try fileManager.contentsOfDirectory(at: directory, includingPropertiesForKeys: nil)
 			for url in directoryContents {
+				if !recordings.contains(where: { $0.fileURL == url }) {
 				print("Fetching \(url)")
 	let recording = Recording(fileURL: url)
 				recordings.append(recording)
 				recordings.sort(by: { $0.calendarDate.compare($1.calendarDate) == .orderedAscending})
-			}
+					needToSave = true
+				} // end if
+			} // end loop
 		} catch {
 			print("Unable to fetch recordings because unable to get the contents of the documents directory in the app's container.")
 		} // end do try catch
+		if needToSave { encodeDiaryEntriesToJSON() }
 	} // func
 
 	func recordings(for date: Date) -> [Recording] {
@@ -433,6 +434,7 @@ iCloudEnabled = isUserLoggedIntoIcloud()
 		print("The user is \(iCloudEnabled ? "" : "not") signed into icloud.")
 		setDocumentsDirectory()
 decodeDiaryEntriesFromJSON()
+		fetchAllRecordings()
 		#if os(iOS)
 		configureAudioSession()
 		configureRecordingSession()

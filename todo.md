@@ -5,12 +5,16 @@
 * double tapping entries, or pressing VO-space on macOS, triggers delete and/or play (both on iOS, just delete on macOS)
 * start recording sound effect captured on recording if not using headphones
 * toolbar not visible on iOS
-* downloading from iCloud is flaky – downloads seem to trigger but are not reflected in realtime, and downloads seem to complete between launches
+* Downloading from iCloud is flaky – downloads seem to trigger but are not reflected in realtime, and downloads seem to complete between launches. Sometimes when choosing download the message printed to the console is that the file didn't start downloading.
 * IOS doesn't remember selected tab between launches
 * Magic Tap gesture only works if focus is on Record or Import button
 
 ##Features
 
+* allow recordings to be deleted using the delete key in the CalendarList view on macOS
+* data model will not be aware if recording files have been deleted or moved since they were created
+* the data model will not sync as we are using @AppStorage which is specific to the user's local machine
+* should save JSON data to icloud rather than @AppStorage
 * improve quality of audio recording
 * sync data with CoreData and CloudKit
 * share recordings/diary entries
@@ -35,12 +39,3 @@
 
 ##Commit Message
 
-Sort diary entries chronologically and fix deleting
-
-* sort diary entries and calendar days chronologically in the recordingsByDay property
-* modify delete methods to remove the relevant recording from the recordings array and encode the array to JSON
-
-Known issues:
-
-* data model will not be aware if recording files have been deleted or moved since they were created
-* the data model will not sync as we are using @AppStorage which is specific to the user's local machine

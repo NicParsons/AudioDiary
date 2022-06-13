@@ -12,7 +12,7 @@ HomeScreen()
 				// .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
 		.commands {
-			FileMenu()
+			FileMenu(model: model)
 			PlaybackControlsMenu(model: model)
 		}
     } // body
