@@ -31,6 +31,8 @@ class Model: NSObject, ObservableObject, AVAudioPlayerDelegate {
 // add it to the relevant element of days
 				if let index = days.firstIndex(where: { recording.calendarDate.isOnTheSameDay(as: $0.date) }) {
 					days[index].diaryEntries.append(recording)
+					// sort diary entries chronologically
+					days[index].diaryEntries.sort(by: { $0.calendarDate < $1.calendarDate })
 				}
 			} else {
 				var newDay = CalendarDay(for: recording.calendarDate)
@@ -38,7 +40,8 @@ class Model: NSObject, ObservableObject, AVAudioPlayerDelegate {
 				days.append(newDay)
 			} // end if
 		} // end loop
-		return days
+		// sort chronologically
+		return days.sorted(by: { $0.date < $1.date } )
 	} // end var
 
 	subscript(id: UUID) -> Recording? {
@@ -331,20 +334,20 @@ print(error)
 	} // func
 
 	func recordings(for date: Date) -> [Recording] {
-		return recordings.filter( { $0.calendarDate.isOnTheSameDay(as: date)} )
+		return recordings.filter( { $0.calendarDate.isOnTheSameDay(as: date)} ).sorted(by: { $0.calendarDate < $1.calendarDate })
 	} // func
 
 	func delete(_ recording: Recording) {
 		let url = recording.fileURL
 		delete(url)
-		fetchAllRecordings()
+encodeDiaryEntriesToJSON()
 	}
 
 	func delete(_ urlsToDelete: [URL]) {
 			for url in urlsToDelete {
 				delete(url)
 			} // loop
-		fetchAllRecordings()
+encodeDiaryEntriesToJSON()
 	} // func
 
 	func delete(_ url: URL) {
@@ -356,6 +359,8 @@ print(error)
 		} catch {
 			print("Could not delete \(url). The error was: \(error.localizedDescription)")
 		} // do try catch
+		recordings.removeAll(where: { $0.fileURL == url } )
+		print("Recording removed from recordings array.")
 	}
 
 	func importRecording(_ url: URL) throws {
@@ -417,6 +422,7 @@ let encoder = JSONEncoder()
 print("Saving \(url).")
 let newDiaryEntry = Recording(fileURL: url)
 		recordings.append(newDiaryEntry)
+		recordings.sort(by: { $0.calendarDate < $1.calendarDate } )
 		encodeDiaryEntriesToJSON()
 		print("New diary entry recording saved.")
 	}

@@ -35,3 +35,12 @@
 
 ##Commit Message
 
+Sort diary entries chronologically and fix deleting
+
+* sort diary entries and calendar days chronologically in the recordingsByDay property
+* modify delete methods to remove the relevant recording from the recordings array and encode the array to JSON
+
+Known issues:
+
+* data model will not be aware if recording files have been deleted or moved since they were created
+* the data model will not sync as we are using @AppStorage which is specific to the user's local machine
