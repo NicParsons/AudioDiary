@@ -13,6 +13,7 @@ class Model: NSObject, ObservableObject, AVAudioPlayerDelegate {
 	@AppStorage("usesICloud") var usesICloud = true
 	@AppStorage("iCloudEnabled") var iCloudEnabled = false
 	var documentsDirectory: URL!
+	@AppStorage("diaryEntries") var diaryEntriesJSON = Data()
 
 	var currentlyPlayingURL: URL? {
 		if let player = audioPlayer {
@@ -82,12 +83,14 @@ audioRecorder = try AVAudioRecorder(url: filePath, settings: recordingSettings)
 	} // func
 
 	func stopRecording() {
+		// should be safe to force unwrap audioRecorder as stopRecording can only be called if a recording has started
+		let newFileURL = audioRecorder!.url
 		audioRecorder!.stop()
 		AudioServicesPlaySystemSound(1114) // end_record.caf
 		// alternative for macOS: playSystemSound(named: "Bottle", ofType: .aiff)
 		isRecording = false
 		print("Recording stopped.")
-		fetchAllRecordings()
+save(newFileURL)
 	} // func
 
 	func startPlaying(_ audio: URL) {
@@ -368,7 +371,7 @@ print(error)
 			print(error)
 			throw error
 		}
-		fetchAllRecordings()
+		save(destinationURL)
 	} // func
 
 	func getICloudToken() -> (NSCoding & NSCopying & NSObjectProtocol)? {
@@ -379,12 +382,51 @@ print(error)
 return getICloudToken() != nil
 	}
 
+	func decodeDiaryEntriesFromJSON() {
+let decoder = JSONDecoder()
+		decoder.dateDecodingStrategy = .iso8601
+		print("About to decode diary entries from JSON.")
+		do {
+			recordings = try decoder.decode([Recording].self, from: diaryEntriesJSON)
+			print("Diary entries decoded.")
+		} catch {
+			print("Error decoding diary entries from JSON. The error message was: \(error.localizedDescription).")
+			fetchAllRecordings()
+		}
+	}
+
+	func encodeDiaryEntriesToJSON() {
+let encoder = JSONEncoder()
+		encoder.outputFormatting = .prettyPrinted
+		encoder.dateEncodingStrategy = .iso8601
+
+		print("About to encode diary entry recordings to JSON.")
+		var jsonData: Data
+		do {
+			jsonData = try encoder.encode(recordings)
+		} catch {
+			print("Error encoding diary entry recordings to JSON. The error message was: \(error.localizedDescription)")
+			return
+		}
+
+		diaryEntriesJSON = jsonData
+		print("Diary entry recordings saved as JSON.")
+	}
+
+	func save(_ url: URL) {
+print("Saving \(url).")
+let newDiaryEntry = Recording(fileURL: url)
+		recordings.append(newDiaryEntry)
+		encodeDiaryEntriesToJSON()
+		print("New diary entry recording saved.")
+	}
+
 	override init() {
 		super.init()
 iCloudEnabled = isUserLoggedIntoIcloud()
 		print("The user is \(iCloudEnabled ? "" : "not") signed into icloud.")
 		setDocumentsDirectory()
-		fetchAllRecordings()
+decodeDiaryEntriesFromJSON()
 		#if os(iOS)
 		configureAudioSession()
 		configureRecordingSession()
