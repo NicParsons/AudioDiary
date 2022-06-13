@@ -50,7 +50,7 @@ class Model: NSObject, ObservableObject, AVAudioPlayerDelegate {
 
 	var recordingSettings = [
 		AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
-		   AVSampleRateKey: 24000, // Apple VoiceMemos is only 24000
+		   AVSampleRateKey: 48000, // Apple VoiceMemos is only 24000
 		   AVNumberOfChannelsKey: 1,
 		   AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
 	   ]
