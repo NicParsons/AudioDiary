@@ -47,18 +47,6 @@ struct RecordingRow: View {
 #if os(iOS)
 .accessibilityElement(children: .combine)
 #endif
-
-		// accessibility actions
-		.accessibilityAction(named: Text(model.isPlaying ? "Pause" : "Play")) {
-			if model.isPlaying {
-				model.pause()
-			} else {
-				model.startPlaying(recording.fileURL)
-			} // end if
-		} // end action
-		.accessibilityAction(named: Text("Delete")) {
-			confirmationDialogIsShown = true
-		}
 		.onAppear {
 			Task {
 			await duration = recording.duration()

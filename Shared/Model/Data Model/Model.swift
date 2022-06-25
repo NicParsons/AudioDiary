@@ -52,6 +52,14 @@ class Model: NSObject, ObservableObject, AVAudioPlayerDelegate {
 		} // end setter
 	} // end subscript
 
+	subscript(url: URL) -> Recording? {
+		get {
+			return recordings.first(where: { $0.fileURL == url })
+		} set {
+			if let newValue = newValue, let index = recordings.firstIndex(where: { $0.fileURL == url }) { recordings[index] = newValue }
+		} // end setter
+	} // end subscript
+
 	var recordingSettings = [
 		AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
 		   AVSampleRateKey: 48000, // Apple VoiceMemos is only 24000
@@ -107,6 +115,10 @@ print("About to play \(audio).")
 			#if os(iOS)
 			setupNotifications()
 			#endif
+			if let recording = self[audio] {
+				audioPlayer.currentTime = recording.playbackPosition
+print("Set playback position to \(audioPlayer.currentTime). The track's playback position is \(recording.playbackPosition).")
+			}
 					audioPlayer.play()
 			DispatchQueue.main.async {
 				self.isPlaying = true
@@ -119,6 +131,7 @@ print("About to play \(audio).")
 
 	func pause() {
 		print("Pausing playback.")
+		savePlaybackPosition()
 		if isPlaying { audioPlayer.pause() }
 		DispatchQueue.main.async {
 			self.isPlaying = false
@@ -138,6 +151,7 @@ print("About to resume playback.")
 
 	func stopPlaying() {
 		print("Stopping playback.")
+		savePlaybackPosition()
 		// UI logic should mean that the stop button can only be pressed if isPlaying
 		// but let's make doubly sure
 		// because if nothing has yet been played the audioPlayer will be nil
@@ -148,23 +162,36 @@ print("About to resume playback.")
 		print("Playback stopped.")
 	} // func
 
+	func savePlaybackPosition() {
+		print("Saving playback position.")
+		guard let player = audioPlayer, let url = currentlyPlayingURL else {
+			return
+		}
+		if let index = recordings.firstIndex(where: { $0.fileURL == url }) {
+		recordings[index].updatePlaybackPosition(to: player.currentTime)
+		encodeDiaryEntriesToJSON() // to save playback position to disk
+		}
+	}
+
 	func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
 			if flag {
+				savePlaybackPosition()
 				DispatchQueue.main.async {
 					self.isPlaying = false
 				} // main queue
 			} // end if
 		} // func
 
-	/*
+
 	func audioPlayerBeginInterruption(_ player: AVAudioPlayer) {
 		// depricated since iOS 8
+		savePlaybackPosition()
 		DispatchQueue.main.async {
 			self.isPlaying = false
 		} // end if
 print("System interupted playback.")
 	}
-	 */
+
 
 	// playing and recording audio requires additional configuration on iOS
 	#if os(iOS)
@@ -311,29 +338,6 @@ print(error)
 		return subDirectory
 	} // func
 
-	func fetchAllRecordings() {
-		print("Fetching recordings.")
-		let fileManager = FileManager.default
-		let directory = recordingsDirectory()
-		var needToSave = false
-
-		do {
-		let directoryContents = try fileManager.contentsOfDirectory(at: directory, includingPropertiesForKeys: nil)
-			for url in directoryContents {
-				if !recordings.contains(where: { $0.fileURL == url }) {
-				print("Fetching \(url)")
-	let recording = Recording(fileURL: url)
-				recordings.append(recording)
-				recordings.sort(by: { $0.calendarDate.compare($1.calendarDate) == .orderedAscending})
-					needToSave = true
-				} // end if
-			} // end loop
-		} catch {
-			print("Unable to fetch recordings because unable to get the contents of the documents directory in the app's container.")
-		} // end do try catch
-		if needToSave { encodeDiaryEntriesToJSON() }
-	} // func
-
 	func recordings(for date: Date) -> [Recording] {
 		return recordings.filter( { $0.calendarDate.isOnTheSameDay(as: date)} ).sorted(by: { $0.calendarDate < $1.calendarDate })
 	} // func
@@ -426,6 +430,43 @@ let newDiaryEntry = Recording(fileURL: url)
 		recordings.sort(by: { $0.calendarDate < $1.calendarDate } )
 		encodeDiaryEntriesToJSON()
 		print("New diary entry recording saved.")
+	}
+
+	func fetchAllRecordings() {
+		removeMissingRecordings()
+		print("Fetching recordings.")
+		let fileManager = FileManager.default
+		let directory = recordingsDirectory()
+		var needToSave = false
+
+		do {
+		let directoryContents = try fileManager.contentsOfDirectory(at: directory, includingPropertiesForKeys: nil)
+			for url in directoryContents {
+				if !recordings.contains(where: { $0.fileURL == url }) {
+				print("Fetching \(url)")
+	let recording = Recording(fileURL: url)
+				recordings.append(recording)
+				recordings.sort(by: { $0.calendarDate.compare($1.calendarDate) == .orderedAscending})
+					needToSave = true
+				} // end if
+			} // end loop
+		} catch {
+			print("Unable to fetch recordings because unable to get the contents of the documents directory in the app's container.")
+		} // end do try catch
+		if needToSave { encodeDiaryEntriesToJSON() }
+	} // func
+
+	func removeMissingRecordings() {
+print("Removing missing recordings.")
+		let fileManager = FileManager.default
+		for recording in recordings {
+			let fileExists = fileManager.fileExists(atPath: recording.fileURL.path)
+			if !fileExists {
+				print("The recording at the following path no longer appeares to exist: \(recording.fileURL.path).")
+				recordings.removeAll(where: { $0.fileURL == recording.fileURL})
+				print("Recording removed.")
+			}
+		}
 	}
 
 	override init() {

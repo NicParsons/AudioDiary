@@ -58,6 +58,14 @@
 		0482C63C280E1EDA00FB2B8B /* ListViewLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C63A280E1EDA00FB2B8B /* ListViewLabel.swift */; };
 		048626CE2813AD2C000DA6F4 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 048626CD2813AD2C000DA6F4 /* CloudKit.framework */; };
 		048626D02813AD5B000DA6F4 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 048626CF2813AD5B000DA6F4 /* CloudKit.framework */; };
+		048A7A4F28629605009377CD /* UUIDExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048A7A4E28629605009377CD /* UUIDExtension.swift */; };
+		048A7A5028629605009377CD /* UUIDExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048A7A4E28629605009377CD /* UUIDExtension.swift */; };
+		048A7A522867476F009377CD /* addVOActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048A7A512867476F009377CD /* addVOActions.swift */; };
+		048A7A532867476F009377CD /* addVOActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048A7A512867476F009377CD /* addVOActions.swift */; };
+		048A7A5528675369009377CD /* enableDeletingWithKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048A7A5428675369009377CD /* enableDeletingWithKeyboard.swift */; };
+		048A7A5628675369009377CD /* enableDeletingWithKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048A7A5428675369009377CD /* enableDeletingWithKeyboard.swift */; };
+		049520642859374F00604FEE /* OBFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 049520632859374F00604FEE /* OBFoundation */; };
+		049520662859394600604FEE /* OBFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 049520652859394600604FEE /* OBFoundation */; };
 		04D378D3280AE984008077EE /* AudioDiary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04D378C0280AE983008077EE /* AudioDiary.xcdatamodeld */; };
 		04D378D4280AE984008077EE /* AudioDiary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04D378C0280AE983008077EE /* AudioDiary.xcdatamodeld */; };
 		04D378D5280AE984008077EE /* AudioDiaryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D378C2280AE983008077EE /* AudioDiaryApp.swift */; };
@@ -110,6 +118,9 @@
 		0482C63A280E1EDA00FB2B8B /* ListViewLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewLabel.swift; sourceTree = "<group>"; };
 		048626CD2813AD2C000DA6F4 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		048626CF2813AD5B000DA6F4 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		048A7A4E28629605009377CD /* UUIDExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UUIDExtension.swift; sourceTree = "<group>"; };
+		048A7A512867476F009377CD /* addVOActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addVOActions.swift; sourceTree = "<group>"; };
+		048A7A5428675369009377CD /* enableDeletingWithKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = enableDeletingWithKeyboard.swift; sourceTree = "<group>"; };
 		04D378C1280AE983008077EE /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		04D378C2280AE983008077EE /* AudioDiaryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioDiaryApp.swift; sourceTree = "<group>"; };
 		04D378C3280AE983008077EE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -131,6 +142,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				049520662859394600604FEE /* OBFoundation in Frameworks */,
 				048626CE2813AD2C000DA6F4 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -139,6 +151,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				049520642859374F00604FEE /* OBFoundation in Frameworks */,
 				048626D02813AD5B000DA6F4 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -196,6 +209,8 @@
 				04D378EB280AF11B008077EE /* DayView.swift */,
 				04D378EE280AF460008077EE /* RecordingsList.swift */,
 				0482C601280BC08800FB2B8B /* RecordingRow.swift */,
+				048A7A512867476F009377CD /* addVOActions.swift */,
+				048A7A5428675369009377CD /* enableDeletingWithKeyboard.swift */,
 			);
 			path = "Helper Views";
 			sourceTree = "<group>";
@@ -213,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				0482C604280BC3CF00FB2B8B /* RecordingExtension.swift */,
+				048A7A4E28629605009377CD /* UUIDExtension.swift */,
 				0482C60D280C367B00FB2B8B /* DateExtensions.swift */,
 				0482C61F280CFBAD00FB2B8B /* StringExtension.swift */,
 				0413396B2811436A0093A4C1 /* IntExtension.swift */,
@@ -340,6 +356,9 @@
 			dependencies = (
 			);
 			name = "AudioDiary (iOS)";
+			packageProductDependencies = (
+				049520652859394600604FEE /* OBFoundation */,
+			);
 			productName = "AudioDiary (iOS)";
 			productReference = 04D378CA280AE984008077EE /* AudioDiary.app */;
 			productType = "com.apple.product-type.application";
@@ -357,6 +376,9 @@
 			dependencies = (
 			);
 			name = "AudioDiary (macOS)";
+			packageProductDependencies = (
+				049520632859374F00604FEE /* OBFoundation */,
+			);
 			productName = "AudioDiary (macOS)";
 			productReference = 04D378D0280AE984008077EE /* AudioDiary.app */;
 			productType = "com.apple.product-type.application";
@@ -388,6 +410,9 @@
 				Base,
 			);
 			mainGroup = 04D378BA280AE983008077EE;
+			packageReferences = (
+				049520622859374F00604FEE /* XCRemoteSwiftPackageReference "OBFoundation" */,
+			);
 			productRefGroup = 04D378CB280AE984008077EE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -433,10 +458,13 @@
 				0482C63B280E1EDA00FB2B8B /* ListViewLabel.swift in Sources */,
 				0482C620280CFBAD00FB2B8B /* StringExtension.swift in Sources */,
 				04D378D5280AE984008077EE /* AudioDiaryApp.swift in Sources */,
+				048A7A5528675369009377CD /* enableDeletingWithKeyboard.swift in Sources */,
 				0482C60E280C367B00FB2B8B /* DateExtensions.swift in Sources */,
 				0482C611280C39A000FB2B8B /* TodayView.swift in Sources */,
 				04133966281123D00093A4C1 /* PlayPauseButton.swift in Sources */,
 				0482C617280CE52F00FB2B8B /* CalendarList.swift in Sources */,
+				048A7A522867476F009377CD /* addVOActions.swift in Sources */,
+				048A7A4F28629605009377CD /* UUIDExtension.swift in Sources */,
 				04D378EF280AF460008077EE /* RecordingsList.swift in Sources */,
 				0482C62A280D227500FB2B8B /* PlayButton.swift in Sources */,
 				0426C4772812E21D00B3E17A /* RecordOnlyButton.swift in Sources */,
@@ -470,12 +498,15 @@
 				0482C615280CDFAF00FB2B8B /* CalendarDay.swift in Sources */,
 				0482C61C280CEE5300FB2B8B /* HomeScreen.swift in Sources */,
 				04D378D6280AE984008077EE /* AudioDiaryApp.swift in Sources */,
+				048A7A5028629605009377CD /* UUIDExtension.swift in Sources */,
 				0413396D2811436A0093A4C1 /* IntExtension.swift in Sources */,
 				0482C61E280CEE9B00FB2B8B /* Sidebar.swift in Sources */,
 				0426C4732812988800B3E17A /* ImportButton.swift in Sources */,
 				0482C60F280C367B00FB2B8B /* DateExtensions.swift in Sources */,
 				04133973281198C20093A4C1 /* FileMenu.swift in Sources */,
+				048A7A5628675369009377CD /* enableDeletingWithKeyboard.swift in Sources */,
 				0426C4782812E21D00B3E17A /* RecordOnlyButton.swift in Sources */,
+				048A7A532867476F009377CD /* addVOActions.swift in Sources */,
 				041E22CB2855B1A600F2E826 /* DeleteButton.swift in Sources */,
 				0482C612280C39A000FB2B8B /* TodayView.swift in Sources */,
 				04133970281169600093A4C1 /* RecordButton.swift in Sources */,
@@ -780,6 +811,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		049520622859374F00604FEE /* XCRemoteSwiftPackageReference "OBFoundation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/NicParsons/OBFoundation";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		049520632859374F00604FEE /* OBFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 049520622859374F00604FEE /* XCRemoteSwiftPackageReference "OBFoundation" */;
+			productName = OBFoundation;
+		};
+		049520652859394600604FEE /* OBFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 049520622859374F00604FEE /* XCRemoteSwiftPackageReference "OBFoundation" */;
+			productName = OBFoundation;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		04D378C0280AE983008077EE /* AudioDiary.xcdatamodeld */ = {

@@ -1,26 +1,27 @@
-#  To Do
+#  To Do – Audio Diary
 
 ##Bugs
 
-* double tapping entries, or pressing VO-space on macOS, triggers delete and/or play (both on iOS, just delete on macOS)
+* double tapping entries triggers delete and play on iOS – maybe there's a way to set which action is default, although it does both play and delete so maybe it's triggering all child actions
 * start recording sound effect captured on recording if not using headphones
 * toolbar not visible on iOS
 * Downloading from iCloud is flaky – downloads seem to trigger but are not reflected in realtime, and downloads seem to complete between launches. Sometimes when choosing download the message printed to the console is that the file didn't start downloading.
-* IOS doesn't remember selected tab between launches
-* Magic Tap gesture only works if focus is on Record or Import button
+* IOS sometimes doesn't remember selected tab between launches
+* Magic Tap gesture only works if focus is on Record or Import button -- if focus is on the list of recordings, the magic tap gesture will go through to the system and resume the system now playing audio
 
 ##Features
 
-* allow recordings to be deleted using the delete key in the CalendarList view on macOS
-* data model will not be aware if recording files have been deleted or moved since they were created
+* data model will not be aware if recording files have been deleted or moved since they were created -- will now remove missing recordings and automatically add new recordings in the expected directory but ideally should register for notifications if files moved and update data model accordingly
 * the data model will not sync as we are using @AppStorage which is specific to the user's local machine
-* should save JSON data to icloud rather than @AppStorage
+* should save JSON data to iCloud rather than @AppStorage
+* should rename files when importing
+* de-couple calendarDate property from creationDate of Recording
 * improve quality of audio recording
 * sync data with CoreData and CloudKit
 * share recordings/diary entries
 * ability to assign recording to a date other than creation date (i.e. allow assignment of calendarDate property) – perhaps this can be done by dragging diary entry to a different date in the journal view
 * allow import of audio files by drag and drop and by copy paste
-* CalendarList view should default to scrolled all the way to the bottom
+* CalendarList view should default to scrolled all the way to the bottom -- struggling to get this to work, even with ScrollViewReader, so as a workaround perhaps can list diary entries in reverse chronological order
 * add other playback controls like skip back, skip forward, speed, etc (might need now playing screen)
 * playback progress and recording progress
 * show playback progress in/under RecordingRow

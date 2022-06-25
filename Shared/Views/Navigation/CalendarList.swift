@@ -2,11 +2,12 @@ import SwiftUI
 
 struct CalendarList: View {
 	@EnvironmentObject var model: Model
-	@State private var selection: UUID?
+	@SceneStorage("calendarListSelection") var selection: UUID?
 	@State private var confirmationDialogIsShown = false
 
     var body: some View {
 		NavigationView {
+			ScrollViewReader { proxy in
 		List(selection: $selection) {
 			ForEach(model.recordingsByDay) { day in
 				Section(header: Text(day.date.formatted(date: .complete, time: .omitted))) {
@@ -17,12 +18,8 @@ RecordingRow(recording: recording)
 			} // ForEach
 		} // List
 		.focusedSceneValue(\.recording, selectedRecording)
-#if os(macOS)
-.onDeleteCommand(perform: {
-	print("Delete key pressed.")
-	if selection != nil { confirmationDialogIsShown = true }
-} )
-#endif
+		.addDiaryEntryVOActions(model: model, selectedRecording: selectedRecording, confirmationDialogIsShown: $confirmationDialogIsShown)
+		.enableDeletingWithKeyboard(of: selection, confirmationDialogIsShown: $confirmationDialogIsShown)
 		// force unwrapping should be safe here as it's conditional on selection
 		.confirmationDialog("Delete \(selection == nil ? "nothing" : model[selection!] == nil ? "nothing" : model[selection!]!.description)?",
 							isPresented: $confirmationDialogIsShown,
@@ -42,6 +39,16 @@ RecordingRow(recording: recording)
 		} message: { _ in
 			Text("Deleting the recording will remove it from icloud and from all your devices signed into icloud. This action cannot be undone.")
 		} // confirmation dialog
+		.onAppear {
+			if selection == nil {
+				if let mostRecentDay = model.recordingsByDay.last {
+					selection = mostRecentDay.diaryEntries.last?.id
+				} // end if let
+			} // end if
+		} // on appear
+		.onChange(of: selection) { newValue in
+			proxy.scrollTo(newValue)
+		}
 		.overlay(Group {
 			if model.recordings.isEmpty {
 				Text("Diary entries that you record or import in the “Today” view will show up here.")
@@ -49,6 +56,19 @@ RecordingRow(recording: recording)
 					.multilineTextAlignment(.center)
 			}
 		}) // overlay group
+			} // ScrollViewReader
+			// Magic Tap is only available on iOS
+			#if os(iOS)
+			// but the following doesn't appear to work
+			// the magic tap gesture goes through to the system now playing thingy
+			.accessibilityAction(.magicTap) {
+			if model.isPlaying {
+				model.pause()
+			} else {
+					model.resumePlayback()
+			} // end if
+			} // magic tap action
+#endif
 		} // NavigationView
 		.navigationTitle(Text("Your Audio Journal"))
 		.toolbar {
@@ -69,7 +89,7 @@ extension CalendarList {
 return nil
 		}
 	}
-}
+} // extension
 
 struct CalendarList_Previews: PreviewProvider {
     static var previews: some View {

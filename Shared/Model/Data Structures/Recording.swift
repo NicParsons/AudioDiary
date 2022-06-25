@@ -20,6 +20,13 @@ struct Recording: Codable, Identifiable, Hashable {
 return creationDate
 	}
 
+	var playbackPosition: TimeInterval = 0
+
+	mutating func updatePlaybackPosition(to time: TimeInterval) {
+playbackPosition = time
+		print("Updated playback position to \(time).")
+	}
+
 	var timeStamp: String {
 		calendarDate.formatted(date: .omitted, time: .shortened)
 	}

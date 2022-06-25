@@ -17,17 +17,17 @@ struct DayView: View {
 				ImportButton()
 			} // HStack
 		} // VStack
-			#if os(iOS)
-		.accessibilityAction(.magicTap) {
-			if model.isPlaying {
-				model.stopPlaying()
-			} else if model.isRecording {
-				model.stopRecording()
-			} else {
-				model.startRecording()
-			} // end if
-		} // magic tap action
-			#endif
+#if os(iOS)
+.accessibilityAction(.magicTap) {
+if model.isPlaying {
+	model.pause()
+} else if model.isRecording {
+	model.stopRecording()
+} else {
+	model.startRecording()
+} // end if
+} // magic tap action
+#endif
 		} // Navigation View
 		.navigationTitle(Text(date.stringWithRelativeFormatting()))
     } // body

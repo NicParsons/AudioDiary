@@ -14,11 +14,8 @@ RecordingRow(recording: recording)
 			} // List
 		.focusedSceneValue(\.recording, selected)
 		.frame(minWidth: 200, maxWidth: 400)
-		#if os(macOS)
-		.onDeleteCommand(perform: {
-			if selected != nil { confirmationDialogIsShown = true }
-		})
-		#endif
+		.addDiaryEntryVOActions(model: model, selectedRecording: selected, confirmationDialogIsShown: $confirmationDialogIsShown)
+		.enableDeletingWithKeyboard(of: selected, confirmationDialogIsShown: $confirmationDialogIsShown)
 		.confirmationDialog("Delete \(selected?.description ?? "nothing")?",
 							isPresented: $confirmationDialogIsShown,
 							titleVisibility: .visible,
@@ -41,6 +38,15 @@ RecordingRow(recording: recording)
 					.font(.largeTitle)
 			} // end if
 		}) // overlay group
+#if os(iOS)
+.accessibilityAction(.magicTap) {
+if model.isPlaying {
+	model.pause()
+} else {
+		model.resumePlayback()
+} // end if
+} // magic tap action
+#endif
     } // body
 
 	// if we later allow multiple selections
@@ -67,6 +73,7 @@ RecordingRow(recording: recording)
 	 // and we'd also have to make the date constant an optional,
 	 // conditionally force unwrap it in the Text view, and
 	 // provide an alternative string to use if it is nil
+	 // or derive the date from the date of one of the recordings
 	 */
 } // view
 
