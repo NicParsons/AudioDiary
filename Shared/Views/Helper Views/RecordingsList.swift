@@ -16,22 +16,7 @@ RecordingRow(recording: recording)
 		.frame(minWidth: 200, maxWidth: 400)
 		.addDiaryEntryVOActions(model: model, selectedRecording: selected, confirmationDialogIsShown: $confirmationDialogIsShown)
 		.enableDeletingWithKeyboard(of: selected, confirmationDialogIsShown: $confirmationDialogIsShown)
-		.confirmationDialog("Delete \(selected?.description ?? "nothing")?",
-							isPresented: $confirmationDialogIsShown,
-							titleVisibility: .visible,
-							presenting: selected) { recording in
-			Button(role: .destructive) {
-				model.delete(recording)
-				selected = nil
-		} label: {
-			Text("Delete")
-			} // button
-			Button("Cancel", role: .cancel) {
-// do nothing
-			}
-		} message: { _ in
-			Text("Deleting the recording will remove it from iCloud and from all your devices signed into iCloud. This action cannot be undone.")
-		} // confirmation dialog
+		.confirmDeletion(ofSelected: $selected, from: model, if: $confirmationDialogIsShown)
 		.overlay(Group {
 			if recordings.isEmpty {
 				Text("You haven't recorded a diary entry for \(date.stringWithRelativeFormatting().lowercased()) yet. Hit the “Record” button to get started.")

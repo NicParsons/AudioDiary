@@ -21,6 +21,7 @@ Label("Record", systemImage: "record.circle")
 							.cornerRadius(8)
 					} // end if
 			} // Button
+			.accessibilityAddTraits(.startsMediaSession)
 	.alert("Please grant the app access to your microphone",
 		   isPresented: $alertIsPresent) {
 		Button("OK", action: { print("The user dismissed the custom alert asking them to grant access to the microphone.") })

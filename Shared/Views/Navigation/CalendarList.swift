@@ -20,25 +20,7 @@ RecordingRow(recording: recording)
 		.focusedSceneValue(\.recording, selectedRecording)
 		.addDiaryEntryVOActions(model: model, selectedRecording: selectedRecording, confirmationDialogIsShown: $confirmationDialogIsShown)
 		.enableDeletingWithKeyboard(of: selection, confirmationDialogIsShown: $confirmationDialogIsShown)
-		// force unwrapping should be safe here as it's conditional on selection
-		.confirmationDialog("Delete \(selection == nil ? "nothing" : model[selection!] == nil ? "nothing" : model[selection!]!.description)?",
-							isPresented: $confirmationDialogIsShown,
-							titleVisibility: .visible,
-							presenting: selection) { recordingID in
-			Button(role: .destructive) {
-				if let recording = model[recordingID] {
-				model.delete(recording)
-					self.selection = nil
-				} // end if
-		} label: {
-			Text("Delete")
-			} // button
-			Button("Cancel", role: .cancel) {
-// do nothing
-			}
-		} message: { _ in
-			Text("Deleting the recording will remove it from icloud and from all your devices signed into icloud. This action cannot be undone.")
-		} // confirmation dialog
+		.confirmDeletion(ofSelected: selectedRecordingBinding, from: model, if: $confirmationDialogIsShown)
 		.onAppear {
 			if selection == nil {
 				if let mostRecentDay = model.recordingsByDay.last {
@@ -82,12 +64,26 @@ RecordingRow(recording: recording)
 } // View
 
 extension CalendarList {
+	// this is needed for the Focus Scene Value to pass to the menu bar controls, but is useful for other stuff as well
 	var selectedRecording: Recording? {
 		if let selectedID = selection, let selectedRecording = model[selectedID] {
 			return selectedRecording
 		} else {
 return nil
 		}
+	}
+
+	// this is needed for the confirmDeletion(of:) modifier
+	var selectedRecordingBinding: Binding<Recording?> {
+		get {
+			if let selectedID = selection {
+				return $model[selectedID]
+			} else {
+				return Binding.constant(nil)
+			} // end if
+		} set {
+			selection = newValue.wrappedValue?.id ?? nil
+		} // setter
 	}
 } // extension
 

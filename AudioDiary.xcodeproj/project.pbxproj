@@ -64,6 +64,8 @@
 		048A7A532867476F009377CD /* addVOActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048A7A512867476F009377CD /* addVOActions.swift */; };
 		048A7A5528675369009377CD /* enableDeletingWithKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048A7A5428675369009377CD /* enableDeletingWithKeyboard.swift */; };
 		048A7A5628675369009377CD /* enableDeletingWithKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048A7A5428675369009377CD /* enableDeletingWithKeyboard.swift */; };
+		048A7A5828681B5F009377CD /* deleteRecordingConfirmationDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048A7A5728681B5F009377CD /* deleteRecordingConfirmationDialog.swift */; };
+		048A7A5928681B5F009377CD /* deleteRecordingConfirmationDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048A7A5728681B5F009377CD /* deleteRecordingConfirmationDialog.swift */; };
 		049520642859374F00604FEE /* OBFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 049520632859374F00604FEE /* OBFoundation */; };
 		049520662859394600604FEE /* OBFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 049520652859394600604FEE /* OBFoundation */; };
 		04D378D3280AE984008077EE /* AudioDiary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04D378C0280AE983008077EE /* AudioDiary.xcdatamodeld */; };
@@ -121,6 +123,7 @@
 		048A7A4E28629605009377CD /* UUIDExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UUIDExtension.swift; sourceTree = "<group>"; };
 		048A7A512867476F009377CD /* addVOActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addVOActions.swift; sourceTree = "<group>"; };
 		048A7A5428675369009377CD /* enableDeletingWithKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = enableDeletingWithKeyboard.swift; sourceTree = "<group>"; };
+		048A7A5728681B5F009377CD /* deleteRecordingConfirmationDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = deleteRecordingConfirmationDialog.swift; sourceTree = "<group>"; };
 		04D378C1280AE983008077EE /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		04D378C2280AE983008077EE /* AudioDiaryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioDiaryApp.swift; sourceTree = "<group>"; };
 		04D378C3280AE983008077EE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -211,6 +214,7 @@
 				0482C601280BC08800FB2B8B /* RecordingRow.swift */,
 				048A7A512867476F009377CD /* addVOActions.swift */,
 				048A7A5428675369009377CD /* enableDeletingWithKeyboard.swift */,
+				048A7A5728681B5F009377CD /* deleteRecordingConfirmationDialog.swift */,
 			);
 			path = "Helper Views";
 			sourceTree = "<group>";
@@ -459,6 +463,7 @@
 				0482C620280CFBAD00FB2B8B /* StringExtension.swift in Sources */,
 				04D378D5280AE984008077EE /* AudioDiaryApp.swift in Sources */,
 				048A7A5528675369009377CD /* enableDeletingWithKeyboard.swift in Sources */,
+				048A7A5828681B5F009377CD /* deleteRecordingConfirmationDialog.swift in Sources */,
 				0482C60E280C367B00FB2B8B /* DateExtensions.swift in Sources */,
 				0482C611280C39A000FB2B8B /* TodayView.swift in Sources */,
 				04133966281123D00093A4C1 /* PlayPauseButton.swift in Sources */,
@@ -516,6 +521,7 @@
 				0482C636280D72DC00FB2B8B /* Model.swift in Sources */,
 				04D378DA280AE984008077EE /* Persistence.swift in Sources */,
 				0482C628280D010B00FB2B8B /* PlaybackControls.swift in Sources */,
+				048A7A5928681B5F009377CD /* deleteRecordingConfirmationDialog.swift in Sources */,
 				0482C639280E1E3600FB2B8B /* TodayViewLabel.swift in Sources */,
 				04133967281123D00093A4C1 /* PlayPauseButton.swift in Sources */,
 				04D378D4280AE984008077EE /* AudioDiary.xcdatamodeld in Sources */,

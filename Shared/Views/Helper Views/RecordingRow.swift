@@ -26,6 +26,8 @@ struct RecordingRow: View {
 		.padding()
 		.frame(maxWidth: .infinity)
 		.frame(height: 50)
+		.confirmDeletion(ofSelected: recordingBinding, from: model, if: $confirmationDialogIsShown)
+		/*
 		.confirmationDialog("Delete \(recording.description)?",
 							isPresented: $confirmationDialogIsShown,
 							titleVisibility: .visible,
@@ -41,7 +43,7 @@ struct RecordingRow: View {
 		} message: { _ in
 			Text("Deleting the recording will remove it from iCloud and from all your devices signed into iCloud. This action cannot be undone.")
 		} // confirmation dialog
-
+*/
 		// macOS automatically combines the RecordingRow into one accessibility element which VoiceOver can interact with to access the child elements
 		// but on iOS the elements are separate by default which makes navigating more verbose and will make it difficult to know which play/delete button relates to which entry
 #if os(iOS)
@@ -71,6 +73,12 @@ struct RecordingRow_Previews: PreviewProvider {
 		RecordingRow(recording: Recording(fileURL: Model().dummyURL()))
 			.environmentObject(Model())
     }
+}
+
+extension RecordingRow {
+	var recordingBinding: Binding<Recording?> {
+		$model[recording.id]
+	}
 }
 
 //  RecordingRow.swift

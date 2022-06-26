@@ -30,6 +30,7 @@ alertIsPresent = true
 				}) {
 Label("Record", systemImage: "record.circle")
 			} // Button
+				.accessibilityAddTraits(.startsMediaSession)
 				.foregroundColor(.green)
 				.disabled(model.isRecording)
 	.alert("Please grant the app access to your microphone",

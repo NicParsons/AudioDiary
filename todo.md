@@ -2,7 +2,9 @@
 
 ##Bugs
 
-* start recording sound effect captured on recording if not using headphones
+* in Today view, selection in RecordingsList is lost when playback is paused
+* sometimes ghost entries show up in iOS
+* start recording sound effect captured on recording if not using headphones (and VoiceOver speaking as well if VO is enabled)
 * toolbar not visible on iOS
 * Downloading from iCloud is flaky – downloads seem to trigger but are not reflected in realtime, and downloads seem to complete between launches. Sometimes when choosing download the message printed to the console is that the file didn't start downloading.
 * IOS sometimes doesn't remember selected tab between launches
@@ -31,6 +33,7 @@
 * allow option of recording location of diary entry
 * add script to show TODOs and FIXMEs as compiler warnings
 * perhaps RecordingRow could have swipe gesture to delete instead of delete button
+* consider accessibility focus state -- where VO focus should be when views appear
 
 ##Console messages
 
