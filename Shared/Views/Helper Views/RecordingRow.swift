@@ -46,6 +46,9 @@ struct RecordingRow: View {
 		// but on iOS the elements are separate by default which makes navigating more verbose and will make it difficult to know which play/delete button relates to which entry
 #if os(iOS)
 .accessibilityElement(children: .combine)
+		// combining the children means that the default action on the element triggers all child buttons
+		// unless we override it like this
+.accessibilityAction { playPause() }
 #endif
 		.onAppear {
 			Task {
@@ -56,6 +59,10 @@ struct RecordingRow: View {
 
 	func nowPlaying() -> Bool {
 		return model.isPlaying && model.audioPlayer.url == recording.fileURL
+	}
+
+	func playPause() {
+		nowPlaying() ? model.pause() : model.startPlaying(recording.fileURL)
 	}
 } // View
 

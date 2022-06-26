@@ -2,7 +2,6 @@
 
 ##Bugs
 
-* double tapping entries triggers delete and play on iOS – maybe there's a way to set which action is default, although it does both play and delete so maybe it's triggering all child actions
 * start recording sound effect captured on recording if not using headphones
 * toolbar not visible on iOS
 * Downloading from iCloud is flaky – downloads seem to trigger but are not reflected in realtime, and downloads seem to complete between launches. Sometimes when choosing download the message printed to the console is that the file didn't start downloading.
@@ -28,10 +27,16 @@
 * recording progress detail view that shows progress of recording with buttons to pause, resume, save/done
 * maybe diary entry detail view
 * pretty calendar view to see all days for which there are recordings
-* understand the weird messages being written to the console (.e. [aqme]        MEMixerChannel.cpp:1639  client <AudioQueueObject@0x139027e00; [0]; play> got error 2003332927 while sending format information)
 * editing/trimming functions
 * allow option of recording location of diary entry
 * add script to show TODOs and FIXMEs as compiler warnings
+* perhaps RecordingRow could have swipe gesture to delete instead of delete button
+
+##Console messages
+
+* understand the weird messages being written to the console
+* [aqme]        MEMixerChannel.cpp:1639  client <AudioQueueObject@0x139027e00; [0]; play> got error 2003332927 while sending format information)
+* 2022-06-26 14:27:34.926984+1000 AudioDiary[41334:2712489] [AXRuntimeCommon] Unknown client: AudioDiary
 
 ##CoreData Warnings
 
