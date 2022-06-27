@@ -3,11 +3,12 @@ import SwiftUI
 struct DayView: View {
 	@EnvironmentObject var model: Model
 	let date: Date
+	@State private var todaysRecordings: [Recording] = []
 
     var body: some View {
 		NavigationView {
 		VStack {
-			RecordingsList(recordings: model.recordings(for: date), date: date)
+			RecordingsList(recordings: todaysRecordings, date: date)
 
 			Spacer()
 
@@ -30,6 +31,7 @@ if model.isPlaying {
 #endif
 		} // Navigation View
 		.navigationTitle(Text(date.stringWithRelativeFormatting()))
+		.onAppear { todaysRecordings = model.recordings(for: date) }
     } // body
 } // view
 

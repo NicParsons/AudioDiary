@@ -339,6 +339,7 @@ print(error)
 	} // func
 
 	func recordings(for date: Date) -> [Recording] {
+		print("Getting recordings for \(date.formatted()).")
 		return recordings.filter( { $0.calendarDate.isOnTheSameDay(as: date)} ).sorted(by: { $0.calendarDate < $1.calendarDate })
 	} // func
 

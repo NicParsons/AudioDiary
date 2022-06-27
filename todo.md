@@ -2,7 +2,6 @@
 
 ##Bugs
 
-* in Today view, selection in RecordingsList is lost when playback is paused
 * sometimes ghost entries show up in iOS
 * start recording sound effect captured on recording if not using headphones (and VoiceOver speaking as well if VO is enabled)
 * toolbar not visible on iOS
