@@ -385,6 +385,24 @@ encodeDiaryEntriesToJSON()
 		save(destinationURL)
 	} // func
 
+	func export(_ url: URL, to destination: URL) throws {
+		print("Exporting \(url) to \(destination).")
+		let fileName = url.lastPathComponent
+		let fileManager = FileManager.default
+		// while we work out how to export to the actual destination
+		// let destinationDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+		let destinationURL = destination.appendingPathComponent(fileName, isDirectory: false)
+		do {
+			let didAccess = url.startAccessingSecurityScopedResource()
+			try fileManager.copyItem(at: url, to: destinationURL)
+			if didAccess { url.stopAccessingSecurityScopedResource() }
+		} catch {
+			print("Unable to export (\(url) to \(destination).")
+			print(error)
+			throw error
+		}
+	}
+
 	func getICloudToken() -> (NSCoding & NSCopying & NSObjectProtocol)? {
 		return FileManager.default.ubiquityIdentityToken
 	}
