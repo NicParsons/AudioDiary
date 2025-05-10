@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "obfoundation",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/NicParsons/OBFoundation",
+      "state" : {
+        "branch" : "main",
+        "revision" : "40284a232d3f504c9097c9fe2f0669ce2a26f31c"
+      }
+    }
+  ],
+  "version" : 2
+}
