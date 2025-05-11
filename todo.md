@@ -11,6 +11,7 @@
 
 ##Features
 
+* status of a recording or recording row should show the duration if it has been downloaded or a cloud image if it is remote
 * data model will not be aware if recording files have been deleted or moved since they were created -- will now remove missing recordings and automatically add new recordings in the expected directory but ideally should register for notifications if files moved and update data model accordingly
 * the data model will not sync as we are using @AppStorage which is specific to the user's local machine
 * should save JSON data to iCloud rather than @AppStorage

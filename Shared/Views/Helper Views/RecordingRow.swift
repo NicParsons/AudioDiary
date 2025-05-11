@@ -18,10 +18,14 @@ struct RecordingRow: View {
 			}
 			.accessibilityElement(children: .combine)
 			.accessibilityLabel(Text(recording.shortDescription.capitalizingFirstLetter() + " (\(duration.formattedAsDuration()))" + (nowPlaying() ? "(now playing)" : "")))
+			#if os(macOS)
 			Spacer()
 			PlayPauseButton(recordingURL: recording.fileURL)
 			DownloadButton(recording: recording)
 			DeleteButton(shouldDelete: $confirmationDialogIsShown)
+			#else
+			recording.statusIndicator
+			#endif
 		} // HStack
 		.padding()
 		.frame(maxWidth: .infinity)
