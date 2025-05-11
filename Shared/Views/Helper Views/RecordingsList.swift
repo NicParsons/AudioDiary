@@ -23,15 +23,6 @@ RecordingRow(recording: recording)
 					.font(.largeTitle)
 			} // end if
 		}) // overlay group
-#if os(iOS)
-.accessibilityAction(.magicTap) {
-if model.isPlaying {
-	model.pause()
-} else {
-		model.resumePlayback()
-} // end if
-} // magic tap action
-#endif
     } // body
 
 	// if we later allow multiple selections

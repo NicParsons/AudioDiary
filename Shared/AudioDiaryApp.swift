@@ -10,6 +10,20 @@ struct AudioDiaryApp: App {
 HomeScreen()
 				.environmentObject(model)
 				// .environment(\.managedObjectContext, persistenceController.container.viewContext)
+#if os(iOS)
+.accessibilityAction(.magicTap) {
+if model.isPlaying {
+	model.pause()
+} else if model.isRecording {
+	model.stopRecording()
+} else {
+	/* we can do this once we add property to model to detect whether playback is paused
+	model.resumePlayback()
+	 */
+	model.startRecording()
+} // end if
+} // magic tap action
+#endif
         }
 		.commands {
 			FileMenu(model: model)

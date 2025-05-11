@@ -40,17 +40,6 @@ RecordingRow(recording: recording)
 		}) // overlay group
 			} // ScrollViewReader
 			// Magic Tap is only available on iOS
-			#if os(iOS)
-			// but the following doesn't appear to work
-			// the magic tap gesture goes through to the system now playing thingy
-			.accessibilityAction(.magicTap) {
-			if model.isPlaying {
-				model.pause()
-			} else {
-					model.resumePlayback()
-			} // end if
-			} // magic tap action
-#endif
 		} // NavigationView
 		.navigationTitle(Text("Your Audio Journal"))
 		.toolbar {
