@@ -2,7 +2,6 @@ import SwiftUI
 
 extension View {
 	@ViewBuilder func addDiaryEntryVOActions(model: Model, selectedRecording: Recording?, confirmationDialogIsShown: Binding<Bool>) -> some View {
-#if os(macOS)
 			if let recording = selectedRecording {
 			let isPlaying = model.isPlaying && model.currentlyPlayingURL == recording.fileURL
 		self
@@ -19,9 +18,6 @@ model.startPlaying(recording.fileURL)
 			} else {
 				self
 			}
-		#else
-		self
-#endif
 	} // func
 } // extension
 

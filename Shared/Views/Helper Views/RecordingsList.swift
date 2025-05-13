@@ -10,11 +10,15 @@ struct RecordingsList: View {
     var body: some View {
 		List(recordings, id: \.self, selection: $selected) { recording in
 RecordingRow(recording: recording)
-			// tried putting the accessibilityAction here but it didn't have the desired effect
 			} // List
 		.focusedSceneValue(\.recording, selected)
 		.frame(minWidth: 200, maxWidth: 400)
-		.addDiaryEntryVOActions(model: model, selectedRecording: selected, confirmationDialogIsShown: $confirmationDialogIsShown)
+		// on macOS, we want the accessibility actions to be available without needing to first interact with the list to select the individual recording row
+		// so adding the accessibility VO actions to the list view in addition to the RecordingRow view
+		// but if we do this on iOS as well it will result in getting the accessibility actions twice
+		#if os(macOS)
+.addDiaryEntryVOActions(model: model, selectedRecording: selected, confirmationDialogIsShown: $confirmationDialogIsShown)
+		#endif
 		.enableDeletingWithKeyboard(of: selected, confirmationDialogIsShown: $confirmationDialogIsShown)
 		.confirmDeletion(ofSelected: $selected, from: model, if: $confirmationDialogIsShown)
 		.overlay(Group {

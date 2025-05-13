@@ -7,11 +7,12 @@
 * toolbar not visible on iOS
 * Downloading from iCloud is flaky – downloads seem to trigger but are not reflected in realtime, and downloads seem to complete between launches. Sometimes when choosing download the message printed to the console is that the file didn't start downloading.
 * IOS sometimes doesn't remember selected tab between launches
+* remote recordings not showing time stamp/duration (perhaps duration needs to be saved as part of data model rather than calculated on the fly)
 
 ##Features
 
 * status of a recording or recording row should show the duration if it has been downloaded or a cloud image if it is remote
-* add accessibility actions to RecordingRow on iOS
+* consider accessibility action for download recording (perhaps not needed as can be downloaded when playing)
 * add gestures e.g. swipe to delete to iOS
 * add property or computed property to model to return whether playback is paused (default false, set to true when pausing, set to false when playback did finish, or when it is stopped, or when playback starts)
 * data model will not be aware if recording files have been deleted or moved since they were created -- will now remove missing recordings and automatically add new recordings in the expected directory but ideally should register for notifications if files moved and update data model accordingly

@@ -18,7 +18,12 @@ RecordingRow(recording: recording)
 			} // ForEach
 		} // List
 		.focusedSceneValue(\.recording, selectedRecording)
+				// on macOS, we want the accessibility actions to be available without needing to first interact with the list to select the individual recording row
+				// so adding the accessibility VO actions to the list view in addition to the RecordingRow view
+				// but if we do this on iOS as well it will result in getting the accessibility actions twice
+				#if os(macOS)
 		.addDiaryEntryVOActions(model: model, selectedRecording: selectedRecording, confirmationDialogIsShown: $confirmationDialogIsShown)
+				#endif
 		.enableDeletingWithKeyboard(of: selection, confirmationDialogIsShown: $confirmationDialogIsShown)
 		.confirmDeletion(ofSelected: selectedRecordingBinding, from: model, if: $confirmationDialogIsShown)
 		.onAppear {
