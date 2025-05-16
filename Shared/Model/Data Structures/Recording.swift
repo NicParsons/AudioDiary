@@ -50,6 +50,7 @@ playbackPosition = time
 			let CMTimeDuration = try await audioAsset.load(.duration)
 			seconds = Int(CMTimeDuration.seconds)
 		} catch {
+			print(error)
 			seconds = 0
 		}
 		return seconds
