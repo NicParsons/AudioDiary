@@ -11,9 +11,13 @@
 
 ##Features
 
+* swipe gestures should work even when VoiceOver is enabled - .accessibilityAddTraits(.allowsDirectInteraction) doesn't seem to work
+* playback of a recording should pause when exiting that entry
 * status of a recording or recording row should show the duration if it has been downloaded or a cloud image if it is remote
 * consider accessibility action for download recording (perhaps not needed as can be downloaded when playing)
 * add gestures e.g. swipe to delete to iOS
+* Carousel view
+* remove silences
 * add property or computed property to model to return whether playback is paused (default false, set to true when pausing, set to false when playback did finish, or when it is stopped, or when playback starts)
 * data model will not be aware if recording files have been deleted or moved since they were created -- will now remove missing recordings and automatically add new recordings in the expected directory but ideally should register for notifications if files moved and update data model accordingly
 * the data model will not sync as we are using @AppStorage which is specific to the user's local machine

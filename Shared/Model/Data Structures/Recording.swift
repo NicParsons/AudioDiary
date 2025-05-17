@@ -1,6 +1,8 @@
 import Foundation
 import AVFoundation
 import SwiftUI
+import CoreTransferable
+import UniformTypeIdentifiers
 
 struct Recording: Codable, Identifiable, Hashable {
 	var id = UUID()
@@ -127,6 +129,17 @@ case downloaded, downloading, remote, error, unknown
 	}
 } // Recording struct
 
-//  Recording.swift
-//  AudioDiary
-//  Created by Nicholas Parsons on 16/4/2022.
+extension Recording: Transferable {
+	static var transferRepresentation: some TransferRepresentation {
+		FileRepresentation(contentType: .mpeg4Audio) { recording in
+			SentTransferredFile(recording.fileURL)
+		} importing: { received in
+			let newRecording = try Model().importRecording(received.file.absoluteURL)
+			return newRecording
+		}
+	}
+} // extension
+
+extension UTType {
+	static var diaryEntry: UTType = UTType(exportedAs: "app.openbooks.AudioDiary.diaryEntry")
+}

@@ -12,7 +12,11 @@ struct CalendarList: View {
 			ForEach(model.recordingsByDay) { day in
 				Section(header: Text(day.date.formatted(date: .complete, time: .omitted))) {
 					ForEach(day.diaryEntries) { recording in
-RecordingRow(recording: recording)
+						NavigationLink {
+RecordingView(recording: recording)
+						} label: {
+							RecordingRow(recording: recording)
+						} // Nav Link
 					} // ForEach
 			} // Section
 			} // ForEach

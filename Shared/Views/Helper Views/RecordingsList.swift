@@ -19,6 +19,7 @@ RecordingRow(recording: recording)
 		#if os(macOS)
 .addDiaryEntryVOActions(model: model, selectedRecording: selected, confirmationDialogIsShown: $confirmationDialogIsShown)
 		#endif
+
 		.enableDeletingWithKeyboard(of: selected, confirmationDialogIsShown: $confirmationDialogIsShown)
 		.confirmDeletion(ofSelected: $selected, from: model, if: $confirmationDialogIsShown)
 		.overlay(Group {

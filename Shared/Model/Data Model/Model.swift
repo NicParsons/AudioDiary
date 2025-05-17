@@ -101,7 +101,7 @@ audioRecorder = try AVAudioRecorder(url: filePath, settings: recordingSettings)
 		// alternative for macOS: playSystemSound(named: "Bottle", ofType: .aiff)
 		isRecording = false
 		print("Recording stopped.")
-save(newFileURL)
+let _ = save(newFileURL)
 	} // func
 
 	func startPlaying(_ audio: URL) {
@@ -182,7 +182,6 @@ print("About to resume playback.")
 			} // end if
 		} // func
 
-
 	func audioPlayerBeginInterruption(_ player: AVAudioPlayer) {
 		// depricated since iOS 8
 		savePlaybackPosition()
@@ -191,7 +190,6 @@ print("About to resume playback.")
 		} // end if
 print("System interupted playback.")
 	}
-
 
 	// playing and recording audio requires additional configuration on iOS
 	#if os(iOS)
@@ -369,7 +367,7 @@ encodeDiaryEntriesToJSON()
 		print("Recording removed from recordings array.")
 	}
 
-	func importRecording(_ url: URL) throws {
+	func importRecording(_ url: URL) throws -> Recording {
 		let fileName = url.lastPathComponent
 		let destinationURL = recordingsDirectory().appendingPathComponent(fileName, isDirectory: false)
 		let fileManager = FileManager.default
@@ -382,7 +380,8 @@ encodeDiaryEntriesToJSON()
 			print(error)
 			throw error
 		}
-		save(destinationURL)
+		let newRecording = save(destinationURL)
+		return newRecording
 	} // func
 
 	func export(_ url: URL, to destination: URL) throws {
@@ -442,13 +441,14 @@ let encoder = JSONEncoder()
 		print("Diary entry recordings saved as JSON.")
 	}
 
-	func save(_ url: URL) {
+	func save(_ url: URL) -> Recording {
 print("Saving \(url).")
 let newDiaryEntry = Recording(fileURL: url)
 		recordings.append(newDiaryEntry)
 		recordings.sort(by: { $0.calendarDate < $1.calendarDate } )
 		encodeDiaryEntriesToJSON()
 		print("New diary entry recording saved.")
+		return newDiaryEntry
 	}
 
 	func fetchAllRecordings() {

@@ -21,7 +21,7 @@ struct ImportButton: View {
 				case .success(let urls):
 					for url in urls {
 					do {
-					try model.importRecording(url)
+					let _ = try model.importRecording(url)
 					} catch {
 						self.error = error
 alertIsShowing = true
