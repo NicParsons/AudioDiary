@@ -3,13 +3,11 @@ import SwiftUI
 @main
 struct AudioDiaryApp: App {
 	@StateObject var model = Model()
-    // let persistenceController = PersistenceController.shared
 
     var body: some Scene {
         WindowGroup {
 HomeScreen()
 				.environmentObject(model)
-				// .environment(\.managedObjectContext, persistenceController.container.viewContext)
 #if os(iOS)
 .accessibilityAction(.magicTap) {
 if model.isPlaying {
@@ -31,10 +29,3 @@ if model.isPlaying {
 		}
     } // body
 } // App
-
-//  AudioDiaryApp.swift
-//  Shared
-//
-//  Created by Nicholas Parsons on 16/4/2022.
-//
-

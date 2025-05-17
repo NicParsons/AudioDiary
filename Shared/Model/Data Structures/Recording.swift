@@ -6,6 +6,7 @@ import UniformTypeIdentifiers
 
 struct Recording: Codable, Identifiable, Hashable {
 	var id = UUID()
+	// var authorID: Person.ID
 	var fileURL: URL
 
 	var creationDate: Date {

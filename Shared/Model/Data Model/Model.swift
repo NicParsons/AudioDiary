@@ -14,6 +14,9 @@ class Model: NSObject, ObservableObject, AVAudioPlayerDelegate {
 	@AppStorage("iCloudEnabled") var iCloudEnabled = false
 	var documentsDirectory: URL!
 	@AppStorage("diaryEntries") var diaryEntriesJSON = Data()
+	@AppStorage("currentUser") var currentUserID = ""
+@AppStorage("people") var peopleJSON = Data()
+	var people = [Person]()
 
 	var currentlyPlayingURL: URL? {
 		if let player = audioPlayer {
@@ -441,6 +444,37 @@ let encoder = JSONEncoder()
 		print("Diary entry recordings saved as JSON.")
 	}
 
+	func encodePeopleToJSON() {
+		let encoder = JSONEncoder()
+				encoder.outputFormatting = .prettyPrinted
+				// encoder.dateEncodingStrategy = .iso8601
+
+				print("About to encode people to JSON.")
+				var jsonData: Data
+				do {
+					jsonData = try encoder.encode(people)
+				} catch {
+					print("Error encoding people to JSON. The error message was: \(error.localizedDescription)")
+					return
+				}
+
+				peopleJSON = jsonData
+				print("People saved as JSON.")
+	} // func
+
+	func decodePeopleFromJSON() {
+		let decoder = JSONDecoder()
+		// decoder.dateDecodingStrategy = .iso8601
+		print("About to decode people from JSON.")
+		do {
+			people = try decoder.decode([Person].self, from: peopleJSON)
+			print("People decoded.")
+		} catch {
+			print("Error decoding people from JSON. The error message was: \(error.localizedDescription).")
+			// create list of people
+		} // do try catch
+	} // func
+
 	func save(_ url: URL) -> Recording {
 print("Saving \(url).")
 let newDiaryEntry = Recording(fileURL: url)
@@ -501,7 +535,3 @@ decodeDiaryEntriesFromJSON()
 		#endif
 	}
 } // class
-
-//  Model.swift
-//  AudioDiary
-//  Created by Nicholas Parsons on 18/4/2022.

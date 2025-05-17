@@ -8,11 +8,3 @@ extension Model {
 return directoryContents[0]
 	}
 }
-
-//
-//  RecordingExtension.swift
-//  AudioDiary
-//
-//  Created by Nicholas Parsons on 17/4/2022.
-//
-

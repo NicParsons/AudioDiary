@@ -11,7 +11,3 @@ extension UUID: @retroactive RawRepresentable {
 		self.init(uuidString: rawValue)
 	}
 }
-
-//  UUIDExtension.swift
-//  AudioDiary
-//  Created by Nicholas Parsons on 22/6/2022.
