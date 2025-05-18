@@ -17,7 +17,7 @@ struct RecordingRow: View {
 				Text("\(recording.shortDescription.capitalizingFirstLetter()) (\(duration == 0 ? "" : duration.formattedAsDuration()))")
 			}
 			.accessibilityElement(children: .combine)
-			.accessibilityLabel(Text(recording.shortDescription.capitalizingFirstLetter() + " (\(duration.formattedAsDuration()))" + (nowPlaying() ? "(now playing)" : "")))
+			.accessibilityLabel(Text("\(recording.shortDescription.capitalizingFirstLetter()) (\(duration == 0 ? "-" : duration.formattedAsDuration())) \(nowPlaying() ? ", now playing" : "")"))
 			#if os(macOS)
 			Spacer()
 			PlayPauseButton(recordingURL: recording.fileURL)
