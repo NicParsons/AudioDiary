@@ -30,6 +30,8 @@
 		04201BDA2DD9CE0F00653CD4 /* NowPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04201BD82DD9CE0F00653CD4 /* NowPlayingView.swift */; };
 		04201BDC2DD9D76C00653CD4 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04201BDB2DD9D76C00653CD4 /* DoubleExtension.swift */; };
 		04201BDD2DD9D76C00653CD4 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04201BDB2DD9D76C00653CD4 /* DoubleExtension.swift */; };
+		04201BDF2DDA011D00653CD4 /* SpeechRecogniser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04201BDE2DDA011D00653CD4 /* SpeechRecogniser.swift */; };
+		04201BE02DDA011D00653CD4 /* SpeechRecogniser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04201BDE2DDA011D00653CD4 /* SpeechRecogniser.swift */; };
 		0426C4722812988800B3E17A /* ImportButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0426C4712812988800B3E17A /* ImportButton.swift */; };
 		0426C4732812988800B3E17A /* ImportButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0426C4712812988800B3E17A /* ImportButton.swift */; };
 		0426C4772812E21D00B3E17A /* RecordOnlyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0426C4762812E21D00B3E17A /* RecordOnlyButton.swift */; };
@@ -111,6 +113,7 @@
 		041E22C92855B1A600F2E826 /* DeleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteButton.swift; sourceTree = "<group>"; };
 		04201BD82DD9CE0F00653CD4 /* NowPlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingView.swift; sourceTree = "<group>"; };
 		04201BDB2DD9D76C00653CD4 /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
+		04201BDE2DDA011D00653CD4 /* SpeechRecogniser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecogniser.swift; sourceTree = "<group>"; };
 		0426C4712812988800B3E17A /* ImportButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportButton.swift; sourceTree = "<group>"; };
 		0426C4762812E21D00B3E17A /* RecordOnlyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordOnlyButton.swift; sourceTree = "<group>"; };
 		0426C4792812E2C400B3E17A /* StopRecordingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopRecordingButton.swift; sourceTree = "<group>"; };
@@ -261,6 +264,7 @@
 			isa = PBXGroup;
 			children = (
 				0482C634280D72DC00FB2B8B /* Model.swift */,
+				04201BDE2DDA011D00653CD4 /* SpeechRecogniser.swift */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -512,6 +516,7 @@
 				041D88762DD8750F0013D961 /* Person.swift in Sources */,
 				0482C62D280D22EE00FB2B8B /* StopPlayingButton.swift in Sources */,
 				0482C602280BC08800FB2B8B /* RecordingRow.swift in Sources */,
+				04201BE02DDA011D00653CD4 /* SpeechRecogniser.swift in Sources */,
 				04BF28572DD96AB800835B5E /* ShareButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -532,6 +537,7 @@
 				0413396D2811436A0093A4C1 /* IntExtension.swift in Sources */,
 				0482C61E280CEE9B00FB2B8B /* Sidebar.swift in Sources */,
 				041D88712DD77CAB0013D961 /* RecordingView.swift in Sources */,
+				04201BDF2DDA011D00653CD4 /* SpeechRecogniser.swift in Sources */,
 				04201BDC2DD9D76C00653CD4 /* DoubleExtension.swift in Sources */,
 				0426C4732812988800B3E17A /* ImportButton.swift in Sources */,
 				0482C60F280C367B00FB2B8B /* DateExtensions.swift in Sources */,
