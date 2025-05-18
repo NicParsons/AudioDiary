@@ -75,6 +75,8 @@
 		049520642859374F00604FEE /* OBFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 049520632859374F00604FEE /* OBFoundation */; };
 		049520662859394600604FEE /* OBFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 049520652859394600604FEE /* OBFoundation */; };
 		0497B67828713FBF0073BC8C /* ExportButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0497B67728713FBF0073BC8C /* ExportButton.swift */; };
+		04BF28562DD96AB800835B5E /* ShareButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF28552DD96AB800835B5E /* ShareButton.swift */; };
+		04BF28572DD96AB800835B5E /* ShareButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF28552DD96AB800835B5E /* ShareButton.swift */; };
 		04D378D5280AE984008077EE /* AudioDiaryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D378C2280AE983008077EE /* AudioDiaryApp.swift */; };
 		04D378D6280AE984008077EE /* AudioDiaryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D378C2280AE983008077EE /* AudioDiaryApp.swift */; };
 		04D378D7280AE984008077EE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D378C3280AE983008077EE /* ContentView.swift */; };
@@ -132,6 +134,7 @@
 		048A7A5728681B5F009377CD /* deleteRecordingConfirmationDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = deleteRecordingConfirmationDialog.swift; sourceTree = "<group>"; };
 		0497B67728713FBF0073BC8C /* ExportButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportButton.swift; sourceTree = "<group>"; };
 		0497B6F528741F610073BC8C /* OBFoundation */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = OBFoundation; sourceTree = "<group>"; };
+		04BF28552DD96AB800835B5E /* ShareButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareButton.swift; sourceTree = "<group>"; };
 		04D378C2280AE983008077EE /* AudioDiaryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioDiaryApp.swift; sourceTree = "<group>"; };
 		04D378C3280AE983008077EE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		04D378C5280AE984008077EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -278,6 +281,7 @@
 				04F024AE2816338F007D448D /* DownloadButton.swift */,
 				041E22C92855B1A600F2E826 /* DeleteButton.swift */,
 				0497B67728713FBF0073BC8C /* ExportButton.swift */,
+				04BF28552DD96AB800835B5E /* ShareButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -498,6 +502,7 @@
 				041D88762DD8750F0013D961 /* Person.swift in Sources */,
 				0482C62D280D22EE00FB2B8B /* StopPlayingButton.swift in Sources */,
 				0482C602280BC08800FB2B8B /* RecordingRow.swift in Sources */,
+				04BF28572DD96AB800835B5E /* ShareButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -524,6 +529,7 @@
 				0426C4782812E21D00B3E17A /* RecordOnlyButton.swift in Sources */,
 				048A7A532867476F009377CD /* addVOActions.swift in Sources */,
 				041E22CB2855B1A600F2E826 /* DeleteButton.swift in Sources */,
+				04BF28562DD96AB800835B5E /* ShareButton.swift in Sources */,
 				0482C612280C39A000FB2B8B /* TodayView.swift in Sources */,
 				04133970281169600093A4C1 /* RecordButton.swift in Sources */,
 				0413396A2811429E0093A4C1 /* secondsToHoursMinutesSeconds.swift in Sources */,

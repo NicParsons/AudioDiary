@@ -26,6 +26,10 @@ class Model: NSObject, ObservableObject, AVAudioPlayerDelegate {
 		} // end if
 	} // variable
 
+	func isPlaying(_ url: URL) -> Bool {
+		return isPlaying && audioPlayer.url == url
+	}
+
 	var recordingsByDay: [CalendarDay] {
 		// this code might take too long to be in a computed property
 		var days = [CalendarDay]()
