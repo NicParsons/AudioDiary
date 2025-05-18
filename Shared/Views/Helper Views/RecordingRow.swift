@@ -28,8 +28,15 @@ struct RecordingRow: View {
 			#endif
 		} // HStack
 		.padding()
+		.padding(.horizontal)
 		.frame(maxWidth: .infinity)
 		.frame(height: 50)
+		.background(
+			Capsule()
+				.fill(Color.blue.opacity(0.15))
+				.shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 2)
+		) // background
+		.padding(.horizontal, 8)
 		.confirmDeletion(ofSelected: recordingBinding, from: model, if: $confirmationDialogIsShown)
 		/*
 		.confirmationDialog("Delete \(recording.description)?",
