@@ -31,7 +31,7 @@ AudioControlsView(recording: recording)
 					} // ended
 			) // Gesture
 		} // Nav Stack
-		.navigationTitle(recording.description)
+		.navigationTitle(recording.description.capitalizingFirstLetter())
 		.toolbar {
 			ToolbarItem(placement: .primaryAction) {
 ShareButton(recording: recording)

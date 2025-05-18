@@ -6,10 +6,10 @@ struct ShareButton: View {
     var body: some View {
 ShareLink(
 	item: recording,
-	subject: Text(recording.description),
-	message: Text(recording.description),
+	subject: Text(recording.description.capitalizingFirstLetter()),
+	message: Text(recording.description.capitalizingFirstLetter()),
 	preview: SharePreview(
-		recording.description,
+		recording.description.capitalizingFirstLetter(),
 		image: Image(systemName: "waveform.circle")
 	) // SharePreivew
 ) // ShareLink

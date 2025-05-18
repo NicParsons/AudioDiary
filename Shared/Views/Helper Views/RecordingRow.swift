@@ -85,7 +85,3 @@ extension RecordingRow {
 		$model[recording.id]
 	}
 }
-
-//  RecordingRow.swift
-//  AudioDiary
-//  Created by Nicholas Parsons on 17/4/2022.
