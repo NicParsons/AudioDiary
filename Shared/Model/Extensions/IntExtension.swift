@@ -9,7 +9,3 @@ extension Int {
 		return formatter.string(from: TimeInterval(self))!
 	}
 }
-
-//  IntExtension.swift
-//  AudioDiary
-//  Created by Nicholas Parsons on 21/4/2022.

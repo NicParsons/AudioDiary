@@ -26,6 +26,10 @@
 		041D88772DD8750F0013D961 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041D88752DD8750F0013D961 /* Person.swift */; };
 		041E22CA2855B1A600F2E826 /* DeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041E22C92855B1A600F2E826 /* DeleteButton.swift */; };
 		041E22CB2855B1A600F2E826 /* DeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041E22C92855B1A600F2E826 /* DeleteButton.swift */; };
+		04201BD92DD9CE0F00653CD4 /* NowPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04201BD82DD9CE0F00653CD4 /* NowPlayingView.swift */; };
+		04201BDA2DD9CE0F00653CD4 /* NowPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04201BD82DD9CE0F00653CD4 /* NowPlayingView.swift */; };
+		04201BDC2DD9D76C00653CD4 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04201BDB2DD9D76C00653CD4 /* DoubleExtension.swift */; };
+		04201BDD2DD9D76C00653CD4 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04201BDB2DD9D76C00653CD4 /* DoubleExtension.swift */; };
 		0426C4722812988800B3E17A /* ImportButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0426C4712812988800B3E17A /* ImportButton.swift */; };
 		0426C4732812988800B3E17A /* ImportButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0426C4712812988800B3E17A /* ImportButton.swift */; };
 		0426C4772812E21D00B3E17A /* RecordOnlyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0426C4762812E21D00B3E17A /* RecordOnlyButton.swift */; };
@@ -105,6 +109,8 @@
 		041D88722DD77F710013D961 /* AudioControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioControlsView.swift; sourceTree = "<group>"; };
 		041D88752DD8750F0013D961 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		041E22C92855B1A600F2E826 /* DeleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteButton.swift; sourceTree = "<group>"; };
+		04201BD82DD9CE0F00653CD4 /* NowPlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingView.swift; sourceTree = "<group>"; };
+		04201BDB2DD9D76C00653CD4 /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
 		0426C4712812988800B3E17A /* ImportButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportButton.swift; sourceTree = "<group>"; };
 		0426C4762812E21D00B3E17A /* RecordOnlyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordOnlyButton.swift; sourceTree = "<group>"; };
 		0426C4792812E2C400B3E17A /* StopRecordingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopRecordingButton.swift; sourceTree = "<group>"; };
@@ -224,6 +230,7 @@
 				048A7A512867476F009377CD /* addVOActions.swift */,
 				048A7A5428675369009377CD /* enableDeletingWithKeyboard.swift */,
 				048A7A5728681B5F009377CD /* deleteRecordingConfirmationDialog.swift */,
+				04201BD82DD9CE0F00653CD4 /* NowPlayingView.swift */,
 			);
 			path = "Helper Views";
 			sourceTree = "<group>";
@@ -244,6 +251,7 @@
 				0482C60D280C367B00FB2B8B /* DateExtensions.swift */,
 				0482C61F280CFBAD00FB2B8B /* StringExtension.swift */,
 				0413396B2811436A0093A4C1 /* IntExtension.swift */,
+				04201BDB2DD9D76C00653CD4 /* DoubleExtension.swift */,
 				041339682811429E0093A4C1 /* secondsToHoursMinutesSeconds.swift */,
 			);
 			path = Extensions;
@@ -465,6 +473,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04201BDD2DD9D76C00653CD4 /* DoubleExtension.swift in Sources */,
+				04201BD92DD9CE0F00653CD4 /* NowPlayingView.swift in Sources */,
 				0482C635280D72DC00FB2B8B /* Model.swift in Sources */,
 				041D88742DD77F710013D961 /* AudioControlsView.swift in Sources */,
 				04D378EC280AF11B008077EE /* DayView.swift in Sources */,
@@ -522,6 +532,7 @@
 				0413396D2811436A0093A4C1 /* IntExtension.swift in Sources */,
 				0482C61E280CEE9B00FB2B8B /* Sidebar.swift in Sources */,
 				041D88712DD77CAB0013D961 /* RecordingView.swift in Sources */,
+				04201BDC2DD9D76C00653CD4 /* DoubleExtension.swift in Sources */,
 				0426C4732812988800B3E17A /* ImportButton.swift in Sources */,
 				0482C60F280C367B00FB2B8B /* DateExtensions.swift in Sources */,
 				04133973281198C20093A4C1 /* FileMenu.swift in Sources */,
@@ -547,6 +558,7 @@
 				0482C62E280D22EE00FB2B8B /* StopPlayingButton.swift in Sources */,
 				0482C63C280E1EDA00FB2B8B /* ListViewLabel.swift in Sources */,
 				0426C47B2812E2C400B3E17A /* StopRecordingButton.swift in Sources */,
+				04201BDA2DD9CE0F00653CD4 /* NowPlayingView.swift in Sources */,
 				04D378D8280AE984008077EE /* ContentView.swift in Sources */,
 				04D378E7280AEA30008077EE /* Recording.swift in Sources */,
 				0482C603280BC08800FB2B8B /* RecordingRow.swift in Sources */,

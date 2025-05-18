@@ -4,16 +4,18 @@
 
 * sometimes ghost entries show up in iOS
 * start recording sound effect captured on recording if not using headphones (and VoiceOver speaking as well if VO is enabled)
-* toolbar not visible on iOS
 * Downloading from iCloud is flaky – downloads seem to trigger but are not reflected in realtime, and downloads seem to complete between launches. Sometimes when choosing download the message printed to the console is that the file didn't start downloading.
 * IOS sometimes doesn't remember selected tab between launches
 * remote recordings not showing time stamp/duration (perhaps duration needs to be saved as part of data model rather than calculated on the fly)
 
 ##Features
 
+* clean up duplication of duration in NowPlayingView and duplication between NowPlayingView and RecordingView
 * swipe gestures should work even when VoiceOver is enabled - .accessibilityAddTraits(.allowsDirectInteraction) doesn't seem to work
-* playback of a recording should pause when exiting that entry
 * status of a recording or recording row should show the duration if it has been downloaded or a cloud image if it is remote
+* add DatePicker to RecordingView to edit the calendar date
+* allow Recordings to be exported and imported as complete .diaryEntries with all metadata, and to be opened directly in AudioDiary from Messages
+* get ShareLink on macOS to display option to share with Messages
 * consider accessibility action for download recording (perhaps not needed as can be downloaded when playing)
 * add gestures e.g. swipe to delete to iOS
 * Carousel view
@@ -26,15 +28,10 @@
 * de-couple calendarDate property from creationDate of Recording
 * improve quality of audio recording
 * use SwiftData to sync
-* share recordings/diary entries
 * ability to assign recording to a date other than creation date (i.e. allow assignment of calendarDate property) – perhaps this can be done by dragging diary entry to a different date in the journal view
 * allow import of audio files by drag and drop and by copy paste
 * CalendarList view should default to scrolled all the way to the bottom -- struggling to get this to work, even with ScrollViewReader, so as a workaround perhaps can list diary entries in reverse chronological order
-* add other playback controls like skip back, skip forward, speed, etc (might need now playing screen)
-* playback progress and recording progress
-* show playback progress in/under RecordingRow
 * recording progress detail view that shows progress of recording with buttons to pause, resume, save/done
-* maybe diary entry detail view
 * pretty calendar view to see all days for which there are recordings
 * editing/trimming functions
 * allow option of recording location of diary entry

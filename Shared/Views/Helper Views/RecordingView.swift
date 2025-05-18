@@ -12,7 +12,7 @@ struct RecordingView: View {
 
 				Spacer()
 
-AudioControlsView(recording: recording)
+NowPlayingView(recording: recording)
 			} // VStack
 			.padding()
 			.frame(maxWidth: .infinity, maxHeight: .infinity)

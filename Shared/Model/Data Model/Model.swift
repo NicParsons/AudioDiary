@@ -169,6 +169,26 @@ print("About to resume playback.")
 		print("Playback stopped.")
 	} // func
 
+	func seekForward(_ seconds: TimeInterval = 10) {
+		guard let player = audioPlayer else { return }
+		let newTime = min(player.currentTime + seconds, player.duration)
+		player.currentTime = newTime
+		savePlaybackPosition()
+	}
+
+	func seekBackward(_ seconds: TimeInterval = 10) {
+		guard let player = audioPlayer else { return }
+		let newTime = max(player.currentTime - seconds, 0)
+		player.currentTime = newTime
+		savePlaybackPosition()
+	}
+
+	func setPlaybackPosition(to time: TimeInterval) {
+		guard let player = audioPlayer else { return }
+		player.currentTime = time
+		savePlaybackPosition()
+	}
+
 	func savePlaybackPosition() {
 		print("Saving playback position.")
 		guard let player = audioPlayer, let url = currentlyPlayingURL else {
