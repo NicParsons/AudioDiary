@@ -8,7 +8,7 @@ struct RecordingView: View {
     var body: some View {
 		NavigationStack {
 			VStack {
-				Text("Duration: \(duration.formattedAsDuration())")
+				Text("Eventually, author details will go here, followed by the transcript/notes.")
 
 				Spacer()
 

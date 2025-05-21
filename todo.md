@@ -16,6 +16,9 @@
 * add DatePicker to RecordingView to edit the calendar date
 * allow Recordings to be exported and imported as complete .diaryEntries with all metadata, and to be opened directly in AudioDiary from Messages
 * get ShareLink on macOS to display option to share with Messages
+* Transcripts
+* ability to take notes while listening to recording
+* create view selection group to be inserted as a toolbar item containing radio buttons for transcript, notes and recording a reply, which wil take a binding to an enum representing the View state, which will determine which of those views is shown in the RecordingView
 * consider accessibility action for download recording (perhaps not needed as can be downloaded when playing)
 * add gestures e.g. swipe to delete to iOS
 * Carousel view
