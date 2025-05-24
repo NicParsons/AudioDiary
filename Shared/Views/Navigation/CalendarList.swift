@@ -8,36 +8,36 @@ struct CalendarList: View {
     var body: some View {
 		NavigationView {
 			ScrollViewReader { proxy in
-		List(selection: $selection) {
-			ForEach(model.recordingsByDay) { day in
-				Section(header: Text(day.date.formatted(date: .complete, time: .omitted))) {
-					ForEach(day.diaryEntries) { recording in
-						NavigationLink {
-RecordingView(recording: recording)
-						} label: {
-							RecordingRow(recording: recording)
-						} // Nav Link
-					} // ForEach
-			} // Section
-			} // ForEach
-		} // List
-		.focusedSceneValue(\.recording, selectedRecording)
-				// on macOS, we want the accessibility actions to be available without needing to first interact with the list to select the individual recording row
-				// so adding the accessibility VO actions to the list view in addition to the RecordingRow view
-				// but if we do this on iOS as well it will result in getting the accessibility actions twice
-				#if os(macOS)
-		.addDiaryEntryVOActions(model: model, selectedRecording: selectedRecording, confirmationDialogIsShown: $confirmationDialogIsShown)
-				#endif
-		.enableDeletingWithKeyboard(of: selection, confirmationDialogIsShown: $confirmationDialogIsShown)
-		.confirmDeletion(ofSelected: selectedRecordingBinding, from: model, if: $confirmationDialogIsShown)
-		.onAppear {
-			if selection == nil {
-				if let mostRecentDay = model.recordingsByDay.last {
-					selection = mostRecentDay.diaryEntries.last?.id
-				} // end if let
-			} // end if
-		} // on appear
-		.onChange(of: selection) { newValue in
+					List(selection: $selection) {
+						ForEach(model.recordingsByDay) { day in
+							Section(header: Text(day.date.formatted(date: .complete, time: .omitted))) {
+								ForEach(day.diaryEntries) { recording in
+									NavigationLink {
+										RecordingView(recording: recording)
+									} label: {
+										RecordingRow(recording: recording)
+									} // Nav Link
+								} // ForEach
+							} // Section
+						} // ForEach
+					} // List
+					.focusedSceneValue(\.recording, selectedRecording)
+					// on macOS, we want the accessibility actions to be available without needing to first interact with the list to select the individual recording row
+					// so adding the accessibility VO actions to the list view in addition to the RecordingRow view
+					// but if we do this on iOS as well it will result in getting the accessibility actions twice
+#if os(macOS)
+					.addDiaryEntryVOActions(model: model, selectedRecording: selectedRecording, confirmationDialogIsShown: $confirmationDialogIsShown)
+#endif
+					.enableDeletingWithKeyboard(of: selection, confirmationDialogIsShown: $confirmationDialogIsShown)
+					.confirmDeletion(ofSelected: selectedRecordingBinding, from: model, if: $confirmationDialogIsShown)
+					.onAppear {
+						if selection == nil {
+							if let mostRecentDay = model.recordingsByDay.last {
+								selection = mostRecentDay.diaryEntries.last?.id
+							} // end if let
+						} // end if
+					} // on appear
+		.onChange(of: selection) { oldValue, newValue in
 			proxy.scrollTo(newValue)
 		}
 		.overlay(Group {
